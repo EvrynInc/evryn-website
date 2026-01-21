@@ -40,7 +40,7 @@ export async function POST(request: NextRequest) {
     }
 
     if (phone) {
-      fields.push({ name: "phone", value: phone });
+      fields.push({ name: "mobilephone", value: phone });
     }
 
     // Submit to HubSpot
