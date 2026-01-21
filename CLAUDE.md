@@ -213,6 +213,23 @@ Justin is non-technical but smart and thoughtful. When making changes:
 
 This is a gentle nudge, not a hard rule. If Justin's in flow and doesn't want to stop, that's fine. But offer.
 
+## Future Tasks (Non-Urgent)
+
+Things to do when there's time, roughly in order of impact:
+
+**SEO & Discoverability:**
+- [ ] Create LinkedIn company page for Evryn Inc. (link to evryn.ai)
+- [ ] Create Twitter/X account for Evryn (even if minimal posting)
+- [ ] Create Crunchbase profile (startup directory + backlink)
+- [ ] Create AngelList/Wellfound profile (same idea)
+- [ ] Product Hunt launch (when ready for public attention)
+
+**Already done:**
+- [x] Justin's LinkedIn Contact Info links to evryn.ai
+- [x] Google Search Console set up, sitemap submitted
+- [x] Vercel Analytics enabled
+- [x] SEO meta tags and Open Graph images
+
 ## End of Session: #lock
 
 When Justin says **#lock**, update documentation to reflect this session:
