@@ -36,7 +36,7 @@ export default function Home() {
             />
           </div>
           <div className="text-xl md:text-2xl text-white/90 leading-relaxed max-w-3xl mx-auto mb-10">
-            <p>Imagine</p>
+            <p>Imagine...</p>
             <p>if every time you needed someone</p>
             <p>for <em>anything</em></p>
             <p>you had a trusted friend</p>

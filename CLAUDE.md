@@ -85,7 +85,7 @@ This is NOT the main product/app - that will be built separately.
 Seed of Life SVG (large, overlaps header), then poetic copy broken into lines:
 
 ```
-Imagine
+Imagine...
 if every time you needed someone
 for anything
 you had a trusted friend
