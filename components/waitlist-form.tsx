@@ -45,9 +45,8 @@ export function WaitlistForm() {
   const widgetIdRef = useRef<string | null>(null);
 
   const hasValidEmail = email.trim() !== "" && isValidEmail(email);
-  const hasValidPhone = phone.trim() !== "" && isValidPhone(phone);
-  const hasValidContact = hasValidEmail || hasValidPhone;
-  const hasRequiredFields = firstName.trim() !== "" && lastName.trim() !== "" && hasValidContact && turnstileToken !== "";
+  const hasValidPhone = phone.trim() === "" || isValidPhone(phone); // Optional, but if provided must be valid
+  const hasRequiredFields = firstName.trim() !== "" && lastName.trim() !== "" && hasValidEmail && hasValidPhone && turnstileToken !== "";
 
   // Check if email is attempted but invalid
   const emailAttempted = email.trim() !== "" && !isValidEmail(email);
@@ -83,8 +82,8 @@ export function WaitlistForm() {
         body: JSON.stringify({
           firstName: firstName.trim(),
           lastName: lastName.trim(),
-          email: hasValidEmail ? email.trim() : null,
-          phone: hasValidPhone ? phone.trim() : null,
+          email: email.trim(),
+          phone: phone.trim() || null,
           turnstileToken,
         }),
       });
@@ -161,7 +160,7 @@ export function WaitlistForm() {
         </div>
 
         <div>
-          <label htmlFor="email" className="sr-only">Email</label>
+          <label htmlFor="email" className="sr-only">Email (required)</label>
           <input
             type="email"
             id="email"
@@ -177,18 +176,12 @@ export function WaitlistForm() {
           </p>
         </div>
 
-        <div className="flex items-center gap-3">
-          <div className="flex-1 h-px bg-white/20"></div>
-          <span className="text-white/50 text-sm">and/or</span>
-          <div className="flex-1 h-px bg-white/20"></div>
-        </div>
-
         <div>
-          <label htmlFor="phone" className="sr-only">Phone number</label>
+          <label htmlFor="phone" className="sr-only">Phone number (optional)</label>
           <input
             type="tel"
             id="phone"
-            placeholder="Phone number"
+            placeholder="Phone (optional)"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
             className={`w-full px-4 py-3 rounded-lg bg-white/10 border text-white placeholder-white/50 focus:outline-none focus:bg-white/15 transition-colors ${
