@@ -230,16 +230,16 @@ export function WaitlistForm() {
             <p className="text-red-300 text-sm">{errorMessage}</p>
           )}
 
-          <button
-          type="submit"
-          disabled={status === "loading" || !hasRequiredFields}
-          className="w-full py-3 px-6 rounded-full bg-white/20 hover:bg-white/30 border border-white/30 text-white font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-white/20"
-        >
-          {status === "loading" ? "Joining..." : "Join waitlist"}
-          </button>
-
           {/* Turnstile - invisible unless interaction needed */}
-          <div ref={turnstileRef}></div>
+          <div ref={turnstileRef} className="flex justify-center"></div>
+
+          <button
+            type="submit"
+            disabled={status === "loading" || !hasRequiredFields}
+            className="w-full py-3 px-6 rounded-full bg-white/20 hover:bg-white/30 border border-white/30 text-white font-medium transition-colors disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-white/20"
+          >
+            {status === "loading" ? "Joining..." : "Join waitlist"}
+          </button>
         </div>
       </form>
     </>
