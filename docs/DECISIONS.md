@@ -4,6 +4,70 @@ A running log of key decisions and the reasoning behind them.
 
 ---
 
+## 2025-01-21: Form & Workflow Decisions
+
+### Context
+Site went live at evryn.ai. Debugged Turnstile issues, finalized form requirements, established development workflow practices.
+
+### Decisions Made
+
+#### 13. Email Required, Phone Optional for Waitlist
+
+**Decision:** Email is required for waitlist signup. Phone is optional.
+
+**Previous approach:** Either email or phone was sufficient ("and/or").
+
+**Why we changed:**
+- HubSpot uses email as the unique identifier for contacts
+- Waitlist communication will primarily be via email (mass texting requires different infrastructure, costs money, has legal requirements)
+- Even text-preferring users expect waitlist announcements via email — it's the norm
+- Phone field kept as optional for future text notifications when infrastructure supports it
+
+**Implementation:** Updated validation in `waitlist-form.tsx`. Phone placeholder now says "Phone (optional)".
+
+---
+
+#### 14. Phone Maps to HubSpot `mobilephone` Field
+
+**Decision:** Phone numbers submitted via the waitlist form map to HubSpot's `mobilephone` property, not `phone`.
+
+**Why:** Virtually everyone entering a phone number will enter their cell. `mobilephone` is more accurate and useful if we eventually text users.
+
+**Implementation:** API route sends `{ name: "mobilephone", value: phone }` to HubSpot.
+
+---
+
+#### 15. Git Workflow: Branches for Bigger Changes
+
+**Decision:** Use feature branches for larger or risky changes; push directly to main for small, safe changes.
+
+**Why:**
+- Vercel auto-creates preview URLs for non-main branches — free staging environment
+- Small tweaks (copy, styling) are safe to push directly to production
+- Bigger features or risky changes should be tested on preview URL first
+
+**Default behavior:** Use judgment. If unsure, ask Justin whether to branch.
+
+**Implementation:** Documented in CLAUDE.md under "Git Workflow: Branches vs Main".
+
+---
+
+#### 16. Context Checkpoints
+
+**Decision:** Proactively check in with Justin periodically to save progress via #lock.
+
+**Cadence:**
+- After completing significant features or fixes
+- After important decisions worth documenting
+- Every ~45-60 minutes during longer sessions
+- Before risky operations
+
+**Why:** Power outages happen. Context gets lost. Better to save incrementally than lose a session's worth of decisions and context.
+
+**Implementation:** Documented in CLAUDE.md under "Context Checkpoints".
+
+---
+
 ## 2025-01-20: Website Implementation Decisions
 
 ### Context
