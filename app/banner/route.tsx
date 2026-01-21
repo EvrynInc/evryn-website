@@ -1,3 +1,18 @@
+/**
+ * LinkedIn Banner Generator
+ *
+ * Generates a 1584x396 banner image with:
+ * - Teal background (#6DBAC4)
+ * - Seed of Life logo (30% opacity)
+ * - "Evryn" wordmark centered on the logo
+ *
+ * Access locally at: http://localhost:3000/banner
+ * Right-click to save as PNG, then upload to LinkedIn.
+ *
+ * If branding changes, update colors/fonts here.
+ * Adjust marginTop/marginLeft to re-center if needed.
+ */
+
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
@@ -16,7 +31,7 @@ export async function GET() {
           position: "relative",
         }}
       >
-        {/* Seed of Life - simplified version using circles */}
+        {/* Seed of Life - sized to match wordmark width */}
         <div
           style={{
             position: "absolute",
@@ -26,8 +41,8 @@ export async function GET() {
           }}
         >
           <svg
-            width="320"
-            height="320"
+            width="480"
+            height="480"
             viewBox="0 0 100 100"
             style={{ opacity: 0.3 }}
           >
@@ -43,16 +58,21 @@ export async function GET() {
           </svg>
         </div>
 
-        {/* Wordmark with subtle shadow for pop */}
+        {/* Wordmark with subtle shadow for pop - manually centered */}
         <div
           style={{
-            fontSize: 96,
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            fontSize: 140,
             fontWeight: 300,
             color: "white",
             letterSpacing: "0.2em",
+            marginTop: -20,
+            marginLeft: 17,
             textShadow: "0 2px 20px rgba(0, 0, 0, 0.15)",
             zIndex: 1,
-            marginLeft: 80, // Offset right to account for profile pic
           }}
         >
           Evryn

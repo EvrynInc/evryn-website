@@ -68,6 +68,52 @@ Site went live at evryn.ai. Debugged Turnstile issues, finalized form requiremen
 
 ---
 
+#### 17. Vercel Analytics (Not Google Analytics)
+
+**Decision:** Use Vercel Analytics for visitor tracking rather than Google Analytics.
+
+**Why:**
+- One-click setup, built into Vercel dashboard
+- Privacy-friendly (no cookie consent banner needed for most cases)
+- Sufficient for a waitlist landing page (visitors, referrers, page views)
+- Free tier adequate for pre-launch traffic
+
+**Revisit when:** Traffic exceeds free tier limits or need more detailed analytics.
+
+---
+
+#### 18. SEO & Social Sharing Setup
+
+**Decision:** Implement comprehensive SEO and social sharing from day one.
+
+**What we added:**
+- Full meta tags (title, description, keywords, canonical URL)
+- Open Graph images (auto-generated via Next.js ImageResponse)
+- Twitter card images
+- sitemap.xml (auto-generated)
+- robots.txt pointing to sitemap
+- Google Search Console setup with sitemap submitted
+
+**Why:**
+- "Evryn" as a brand name should dominate search quickly once Google knows we exist
+- Removes friction when people search after hearing about us
+- Social sharing looks professional with OG images
+
+---
+
+#### 19. LinkedIn Banner Generator
+
+**Decision:** Create a dynamic banner generator at `/banner` route rather than static image files.
+
+**Why:**
+- Easy to tweak if branding changes (just edit code, regenerate)
+- Keeps branded assets consistent with site colors/fonts
+- Lives in codebase, version controlled
+
+**Implementation:** `app/banner/route.tsx` generates 1584x396 LinkedIn banner. Access locally at http://localhost:3000/banner, right-click to save.
+
+---
+
 ## 2025-01-20: Website Implementation Decisions
 
 ### Context

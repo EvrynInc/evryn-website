@@ -40,20 +40,23 @@ This is NOT the main product/app - that will be built separately.
 
 ## Current Status
 
-**As of 2025-01-21:** Site is LIVE at evryn.ai. Waitlist form working end-to-end.
+**As of 2025-01-21:** Website is COMPLETE and LIVE at evryn.ai. Ready for traffic.
 
-**Completed this session:**
-- Fixed Turnstile bug (domain whitelist issue)
-- Moved evryn.ai domain from old Vercel project to new one
-- Form submits successfully to HubSpot (first name, last name, email, mobile phone)
-- Made email required, phone optional
+**What's working:**
+- Landing page with waitlist form
+- Form submits to HubSpot (first name, last name, email required, phone optional → mobilephone)
+- Cloudflare Turnstile captcha (invisible mode)
+- SEO meta tags, Open Graph images for social sharing
+- Vercel Analytics tracking visitors
+- Google Search Console set up, sitemap submitted
+- Privacy policy page
 
 **Production setup:**
 - Vercel project: `evryn-website`
 - Live URL: `https://evryn.ai`
 - Preview URL: `evryn-website.vercel.app`
 - Old project (`evryn-prelaunch`) still exists at `evryn-prelaunch.vercel.app` as rollback
-- Domains whitelisted: Turnstile (evryn.ai, evryn-website.vercel.app), HubSpot (same)
+- Domains whitelisted: Turnstile, HubSpot (both evryn.ai and evryn-website.vercel.app)
 
 ## Design Direction
 
@@ -153,8 +156,14 @@ Stored in `.env.local` (not committed to git). See `.env.example` for template.
 ## Key Files
 
 - `app/page.tsx` - Main landing page
+- `app/layout.tsx` - Root layout (fonts, metadata, analytics)
 - `app/privacy-policy/page.tsx` - Privacy policy
 - `app/api/waitlist/route.ts` - API route that validates Turnstile + submits to HubSpot
+- `app/opengraph-image.tsx` - Auto-generated OG image for social sharing
+- `app/twitter-image.tsx` - Auto-generated Twitter card image
+- `app/sitemap.ts` - Auto-generated sitemap for SEO
+- `app/robots.ts` - Robots.txt for search engines
+- `app/banner/route.tsx` - LinkedIn banner generator (access at /banner locally, see file comments)
 - `components/waitlist-form.tsx` - Custom waitlist form with validation
 - `public/seed-of-life.svg` - Main logo graphic
 - `public/favicon.svg` - Browser tab icon
