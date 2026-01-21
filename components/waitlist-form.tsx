@@ -21,7 +21,8 @@ declare global {
       render: (container: string | HTMLElement, options: {
         sitekey: string;
         callback: (token: string) => void;
-        "expired-callback": () => void;
+        "expired-callback"?: () => void;
+        "error-callback"?: () => void;
         theme?: "light" | "dark" | "auto";
         appearance?: "always" | "execute" | "interaction-only";
         size?: "normal" | "compact" | "invisible";
@@ -55,13 +56,39 @@ export function WaitlistForm() {
 
   useEffect(() => {
     if (turnstileLoaded && turnstileRef.current && !widgetIdRef.current) {
-      widgetIdRef.current = window.turnstile.render(turnstileRef.current, {
-        sitekey: process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!,
-        callback: (token: string) => setTurnstileToken(token),
-        "expired-callback": () => setTurnstileToken(""),
-        theme: "dark",
-        appearance: "interaction-only",
-      });
+      const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
+
+      // Debug logging
+      console.log("[Turnstile] Attempting to render widget");
+      console.log("[Turnstile] Site key available:", !!siteKey);
+      console.log("[Turnstile] Site key value:", siteKey ? siteKey.substring(0, 10) + "..." : "MISSING");
+
+      if (!siteKey) {
+        console.error("[Turnstile] ERROR: NEXT_PUBLIC_TURNSTILE_SITE_KEY is not set!");
+        return;
+      }
+
+      try {
+        widgetIdRef.current = window.turnstile.render(turnstileRef.current, {
+          sitekey: siteKey,
+          callback: (token: string) => {
+            console.log("[Turnstile] Token received successfully");
+            setTurnstileToken(token);
+          },
+          "expired-callback": () => {
+            console.log("[Turnstile] Token expired");
+            setTurnstileToken("");
+          },
+          "error-callback": () => {
+            console.error("[Turnstile] Widget error occurred");
+          },
+          theme: "dark",
+          appearance: "interaction-only",
+        });
+        console.log("[Turnstile] Widget rendered with ID:", widgetIdRef.current);
+      } catch (error) {
+        console.error("[Turnstile] Render error:", error);
+      }
     }
   }, [turnstileLoaded]);
 
