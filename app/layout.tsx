@@ -9,10 +9,34 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: "Evryn - Find your people",
-  description: "Evryn is an AI who finds you your people — the rare individuals who are just the right fit for you in any domain of life.",
+  description: "Evryn is an AI who finds you your people — the rare individuals who are just the right fit for you in any domain of life. She only connects people she trusts.",
+  keywords: ["AI", "matchmaking", "connections", "networking", "relationships", "trusted introductions"],
+  authors: [{ name: "Evryn Inc." }],
+  creator: "Evryn Inc.",
+  metadataBase: new URL("https://evryn.ai"),
+  alternates: {
+    canonical: "/",
+  },
   icons: {
     icon: "/favicon.svg",
     apple: "/favicon.svg",
+  },
+  openGraph: {
+    title: "Evryn - Find your people",
+    description: "An AI who finds you your people — and only connects people she trusts.",
+    url: "https://evryn.ai",
+    siteName: "Evryn",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Evryn - Find your people",
+    description: "An AI who finds you your people — and only connects people she trusts.",
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 
