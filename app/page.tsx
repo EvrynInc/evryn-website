@@ -36,7 +36,7 @@ export default function Home() {
             />
           </div>
           <div className="text-xl md:text-2xl text-white/90 leading-relaxed max-w-3xl mx-auto mb-10">
-            <p>Imagine...</p>
+            <p>Imagine</p>
             <p>if every time you needed someone</p>
             <p>for <em>anything</em></p>
             <p>you had a trusted friend</p>
@@ -44,11 +44,14 @@ export default function Home() {
             <p>and she'd just...</p>
             <p>find you the right person.</p>
             <p className="pt-3">And not <em>just</em> the best fit for you</p>
-            <p>but also someone she <span className="underline">trusted</span> enough</p>
+            <p>but <em>also</em> someone she <em><span className="underline">trusted</span></em> enough</p>
             <p>to bring into your life.</p>
           </div>
           <p className="text-2xl md:text-3xl text-white font-medium">
-            Evryn finds you <em>your</em> people.
+            Evryn is your personal AI
+          </p>
+          <p className="text-2xl md:text-3xl text-white font-medium">
+            who finds you <em>your</em> people.
           </p>
         </section>
 

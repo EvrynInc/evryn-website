@@ -29,19 +29,30 @@ export async function GET() {
         }}
       >
         <svg
-          width="320"
-          height="320"
-          viewBox="0 0 100 100"
+          width="390"
+          height="390"
+          viewBox="30 30 140 140"
         >
-          {/* Center circle */}
-          <circle cx="50" cy="50" r="16" fill="none" stroke="white" strokeWidth="1.2" />
-          {/* Six surrounding circles */}
-          <circle cx="50" cy="34" r="16" fill="none" stroke="white" strokeWidth="1.2" />
-          <circle cx="63.9" cy="42" r="16" fill="none" stroke="white" strokeWidth="1.2" />
-          <circle cx="63.9" cy="58" r="16" fill="none" stroke="white" strokeWidth="1.2" />
-          <circle cx="50" cy="66" r="16" fill="none" stroke="white" strokeWidth="1.2" />
-          <circle cx="36.1" cy="58" r="16" fill="none" stroke="white" strokeWidth="1.2" />
-          <circle cx="36.1" cy="42" r="16" fill="none" stroke="white" strokeWidth="1.2" />
+          <defs>
+            <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+              <feMerge>
+                <feMergeNode in="coloredBlur"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
+          </defs>
+          <g fill="none" stroke="rgba(255,255,255,0.85)" strokeWidth="1.2" filter="url(#glow)">
+            {/* Center circle */}
+            <circle cx="100" cy="100" r="33"/>
+            {/* Six surrounding circles */}
+            <circle cx="100" cy="67" r="33"/>
+            <circle cx="128.6" cy="83.5" r="33"/>
+            <circle cx="128.6" cy="116.5" r="33"/>
+            <circle cx="100" cy="133" r="33"/>
+            <circle cx="71.4" cy="116.5" r="33"/>
+            <circle cx="71.4" cy="83.5" r="33"/>
+          </g>
         </svg>
       </div>
     ),

@@ -85,7 +85,7 @@ This is NOT the main product/app - that will be built separately.
 Seed of Life SVG (large, overlaps header), then poetic copy broken into lines:
 
 ```
-Imagine...
+Imagine
 if every time you needed someone
 for anything
 you had a trusted friend
@@ -98,7 +98,11 @@ but also someone she trusted enough
 to bring into your life.
 ```
 
-Then: **Evryn finds you *your* people.**
+(Note: "anything", "just", "also", and "trusted" are italicized; "trusted" also has underline)
+
+Then:
+**Evryn is your personal AI**
+**who finds you *your* people.**
 
 ### Pillars Section
 Opens with "It's easy..." then three columns:
@@ -164,6 +168,7 @@ Stored in `.env.local` (not committed to git). See `.env.example` for template.
 - `app/sitemap.ts` - Auto-generated sitemap for SEO
 - `app/robots.ts` - Robots.txt for search engines
 - `app/banner/route.tsx` - LinkedIn banner generator (access at /banner locally, see file comments)
+- `app/profile-image/route.tsx` - X/Twitter profile image generator (access at /profile-image locally)
 - `components/waitlist-form.tsx` - Custom waitlist form with validation
 - `public/seed-of-life.svg` - Main logo graphic
 - `public/favicon.svg` - Browser tab icon
