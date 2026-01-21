@@ -43,6 +43,10 @@ This is NOT the main product/app - that will be built separately.
 **As of 2025-01-20:** Landing page is functional. Justin may continue design tweaks in next session. The overall structure and copy are in good shape.
 
 **TODO next session:**
+- Set up new Vercel project for this repo (keep old project as rollback option)
+  - Create new project, connect to EvrynInc/evryn-website
+  - Add env vars: `TURNSTILE_SECRET_KEY` and `NEXT_PUBLIC_TURNSTILE_SITE_KEY`
+  - Move evryn.ai domain from old project to new project
 - Test the waitlist form end-to-end (verify submissions land in HubSpot)
 - Any remaining design tweaks
 
