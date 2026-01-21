@@ -147,8 +147,8 @@ export function WaitlistForm() {
   if (status === "success") {
     return (
       <div className="text-center py-8">
-        <p className="text-white text-xl mb-2">You're on the list.</p>
-        <p className="text-white/70">I'll be in touch soon.</p>
+        <p className="text-white text-xl mb-2">You're on the list!</p>
+        <p className="text-white/70">We look forward to talking soon.</p>
       </div>
     );
   }
@@ -159,6 +159,7 @@ export function WaitlistForm() {
         src="https://challenges.cloudflare.com/turnstile/v0/api.js"
         onLoad={() => setTurnstileLoaded(true)}
       />
+      <h2 className="text-xl font-medium text-white mb-5">Join the Waitlist</h2>
       <form onSubmit={handleSubmit} className="space-y-3">
         <div className="grid grid-cols-2 gap-4">
           <div>

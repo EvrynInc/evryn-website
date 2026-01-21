@@ -106,7 +106,6 @@ export default function Home() {
             "I can't wait to meet you." — Evryn
           </p>
           <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 md:p-8 max-w-xl mx-auto border border-white/20">
-            <h2 className="text-xl font-medium text-white mb-5">Join the Waitlist</h2>
             <WaitlistForm />
           </div>
         </section>
