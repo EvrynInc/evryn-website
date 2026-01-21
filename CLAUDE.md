@@ -40,20 +40,20 @@ This is NOT the main product/app - that will be built separately.
 
 ## Current Status
 
-**As of 2025-01-20:** Landing page is functional. Justin may continue design tweaks in next session. The overall structure and copy are in good shape.
+**As of 2025-01-21:** Site is LIVE at evryn.ai. Waitlist form working end-to-end.
 
-**TODO next session:**
-- **BUG TO FIX:** "Join waitlist" button never activates on Vercel deployment (works locally). Likely Turnstile not loading or not getting token. Debug this.
-- Move evryn.ai domain from old Vercel project to new one (once form works)
-- Test the waitlist form end-to-end (verify submissions land in HubSpot)
-- Any remaining design tweaks
+**Completed this session:**
+- Fixed Turnstile bug (domain whitelist issue)
+- Moved evryn.ai domain from old Vercel project to new one
+- Form submits successfully to HubSpot (first name, last name, email, mobile phone)
+- Made email required, phone optional
 
-**Vercel setup DONE:**
-- New project: `evryn-website`
+**Production setup:**
+- Vercel project: `evryn-website`
+- Live URL: `https://evryn.ai`
 - Preview URL: `evryn-website.vercel.app`
-- Env vars configured
-- Old project (`evryn-prelaunch`) still exists as rollback
-- HubSpot whitelist: added `evryn-website.vercel.app`
+- Old project (`evryn-prelaunch`) still exists at `evryn-prelaunch.vercel.app` as rollback
+- Domains whitelisted: Turnstile (evryn.ai, evryn-website.vercel.app), HubSpot (same)
 
 ## Design Direction
 
@@ -117,13 +117,14 @@ Quote: "I can't wait to meet you." — Evryn
 
 Form inside bordered container with "Join the Waitlist" heading:
 - First name / Last name (side by side)
-- Email
-- "and/or" divider
-- Phone number
+- Email (required)
+- Phone (optional)
 - Cloudflare Turnstile (invisible unless challenged)
-- Submit button (disabled until valid contact info + captcha)
+- Submit button (disabled until valid email + captcha)
 
-Success message: "You're on the list. I'll be in touch soon."
+Success message: "You're on the list!" / "We look forward to talking soon."
+
+**HubSpot integration:** Form submits to HubSpot via API. Email is the unique identifier — repeat submissions update the existing contact rather than creating duplicates. Phone maps to `mobilephone` field.
 
 ### Footer
 - "Find *your* people."
@@ -174,6 +175,43 @@ Justin is non-technical but smart and thoughtful. When making changes:
 - Ask for clarification rather than guessing on design/copy decisions
 - When in doubt about aesthetic choices, describe options and ask
 - **Proactively flag risks:** If Justin asks for something that could break functionality, cause accessibility issues, create technical debt, or have unintended consequences, speak up. Justin wants what he wants, but defers to technical judgment - don't let his non-technical perspective lead to broken things
+
+## Git Workflow: Branches vs Main
+
+**Use judgment on when to use feature branches vs pushing directly to main:**
+
+**Push directly to main** (what we've been doing) for:
+- Small, safe changes (copy tweaks, minor styling)
+- Bug fixes that are straightforward
+- Changes Justin has already reviewed/approved
+
+**Use a feature branch** for:
+- Larger features or refactors
+- Risky changes that could break things
+- Anything that needs testing before going live
+- When Justin says "let's use a branch for this"
+
+**How feature branches work:**
+1. Create branch: `git checkout -b feature/description`
+2. Make changes, commit, push: `git push -u origin feature/description`
+3. Vercel auto-creates a preview URL for testing
+4. When ready: merge to main → goes to production
+
+**Default behavior:** Use judgment. If unsure, ask Justin: "This seems like a bigger change — want me to use a branch so you can test it first?"
+
+## Context Checkpoints
+
+**Power outages happen. Context gets lost. Proactively save progress.**
+
+**Check in with Justin periodically:**
+- After completing a significant feature or fix
+- After making important decisions worth documenting
+- Every ~45-60 minutes during longer sessions
+- Before any risky operation
+
+**What to say:** "Hey, we've covered a lot — want me to do a quick #lock to save our progress?"
+
+This is a gentle nudge, not a hard rule. If Justin's in flow and doesn't want to stop, that's fine. But offer.
 
 ## End of Session: #lock
 
