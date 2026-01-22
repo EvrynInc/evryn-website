@@ -76,7 +76,7 @@ export default function Home() {
                 She finds <em>your</em> people
               </h2>
               <p className="text-base text-white/80 leading-relaxed">
-                Whoever you need: soulmate, cofounder, crew, someone fun — even just the right tutor, or someone to buy an old couch. Not <em>more</em> options. The <em>right</em> ones.
+                Whoever you need: soulmate, cofounder, crew, someone fun — even that <em>just-right</em> tutor, or someone to buy an old couch. Not <em>more</em> options. The <em>right</em> ones.
               </p>
             </div>
 
