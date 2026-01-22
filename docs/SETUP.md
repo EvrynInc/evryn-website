@@ -200,6 +200,7 @@ Code/
 ├── _evryn-meta/              ← System-wide docs (separate repo)
 │   └── SYSTEM_OVERVIEW.md
 ├── evryn-prelaunch-landing/  ← Old site (archived, for reference)
+├── evryn-team-agents/        ← AI agent system (new project)
 └── evryn-website/            ← This repo
     ├── CLAUDE.md             ← CC reads this automatically
     ├── README.md
@@ -220,7 +221,7 @@ Code/
 | Local dev | http://localhost:3000 |
 | Production | https://evryn.ai |
 | GitHub repo | https://github.com/EvrynInc/evryn-website |
-| Vercel dashboard | TBD (will set up when deploying) |
+| Vercel dashboard | https://vercel.com/evryn |
 | HubSpot | https://app.hubspot.com |
 | Cloudflare Turnstile | https://dash.cloudflare.com/dfe0b79fbf3c449a6c692f4fa1742cd7/turnstile |
 
