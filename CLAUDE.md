@@ -110,8 +110,8 @@ Opens with "It's easy..." then three columns:
 **1. You just talk to Evryn**
 She listens, learns what you actually need, and continues to deepen her understanding of you. No searching. No swiping. No profiles to build.
 
-**2. She finds your people**
-Soulmate, cofounder, crew, hookup — even a plumber, or just someone to buy an old couch. Not *more* options. The *right* ones.
+**2. She finds *your* people**
+Whoever you need: soulmate, cofounder, crew, someone fun — even that *just-right* tutor, or just someone to buy an old couch. Not *more* options. The *right* ones.
 
 **3. She guards your gates**
 No public profile and no open messaging means there's simply no way for pesterers, creeps, spammers, or scammers to even find you. Evryn only connects someone if she trusts them enough to connect them to you.
