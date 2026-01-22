@@ -73,10 +73,10 @@ export default function Home() {
             {/* Pillar 2 */}
             <div>
               <h2 className="text-xl md:text-2xl font-medium text-white mb-3">
-                She finds your people
+                She finds <em>your</em> people
               </h2>
               <p className="text-base text-white/80 leading-relaxed">
-                Soulmate, cofounder, crew, hookup — even a plumber, or just someone to buy an old couch. Not <em>more</em> options. The <em>right</em> ones.
+                Whoever you need: soulmate, cofounder, crew, someone fun — even just the right tutor, or someone to buy an old couch. Not <em>more</em> options. The <em>right</em> ones.
               </p>
             </div>
 
