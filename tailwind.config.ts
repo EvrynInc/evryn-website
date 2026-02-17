@@ -15,7 +15,7 @@ const config: Config = {
         },
       },
       fontFamily: {
-        sans: ["Inter", "system-ui", "sans-serif"],
+        sans: ["Karla", "system-ui", "sans-serif"],
       },
     },
   },

@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Karla } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 
-const inter = Inter({
+const karla = Karla({
   subsets: ["latin"],
   display: "swap",
+  weight: ["300", "400"],
 });
 
 export const metadata: Metadata = {
@@ -74,7 +75,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${inter.className} antialiased`}>
+      <body className={`${karla.className} antialiased font-light`}>
         {children}
         <Analytics />
       </body>
