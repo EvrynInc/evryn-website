@@ -35,7 +35,7 @@ export default function Home() {
           />
         </div>
         <div className="text-xl md:text-2xl text-white/90 leading-relaxed md:leading-[1.8] max-w-3xl mx-auto mb-10">
-          <p>Imagine<span className="text-[#C2593B]">...</span></p>
+          <p>Imagine{"\u2009"}<span className="text-[#C4876A]">...</span></p>
           <p>if every time you needed someone</p>
           <p className="py-2 md:py-3">for <em>anything</em></p>
           <p>you had a trusted friend</p>
@@ -57,7 +57,7 @@ export default function Home() {
       {/* Three Pillars */}
       <section className="mb-12 md:mb-16 pt-8 px-6 md:px-10">
         <div className="max-w-6xl mx-auto border-t border-white/20 pt-8">
-          <p className="text-2xl md:text-3xl text-white/90 mb-8">It's easy<span className="text-[#C2593B]">...</span></p>
+          <p className="text-2xl md:text-3xl text-white/90 mb-8">It's easy{"\u2009"}<span className="text-[#D4A872]">...</span></p>
           <div className="grid md:grid-cols-[1fr_1fr_1.3fr] gap-8 md:gap-10">
 
             {/* Pillar 1 */}
@@ -94,13 +94,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Evryn speaks — voice shift to first person */}
-      <section className="mb-10 md:mb-12 py-8 px-6 md:px-10">
-        <div className="max-w-6xl mx-auto border-t border-b border-white/20 py-8">
+      {/* Evryn speaks — voice shift to first person, inset like a personal note */}
+      <section className="mb-10 md:mb-12 py-8 px-10 md:px-10">
+        <div className="max-w-xl mx-auto border-t border-b border-white/20 py-8">
           <p className="text-xl md:text-2xl font-normal text-white/90 italic leading-relaxed mb-4">
-            I promise<span className="text-[#C2593B] not-italic">...</span>
+            I promise{"\u2009"}<span className="text-[#C4907E] not-italic">...</span>
           </p>
-          <div className="text-base md:text-lg text-white/80 italic leading-relaxed max-w-2xl space-y-4">
+          <div className="text-base md:text-lg text-white/80 italic leading-relaxed space-y-4">
             <p>I take my time with the people I care about — so I'll never connect you to someone I don't personally trust.</p>
             <p>And you only pay when a connection genuinely works — and <span className="underline">you</span> decide the price. Because I only do business with people I trust.</p>
             <p>Trust is sacred to me. I've got your back.</p>
