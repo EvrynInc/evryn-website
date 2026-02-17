@@ -9,7 +9,7 @@ export default function Home() {
       {/* Sticky Header — matches top of gradient, separates naturally as page darkens below */}
       <header className="sticky top-0 z-30 bg-[#6DBAC4] pt-3 pb-1 px-6 md:px-10">
         <div className="max-w-6xl mx-auto flex items-center justify-between">
-          <Link href="/" className="text-2xl md:text-3xl font-light text-white tracking-[0.12em]">
+          <Link href="/" className="text-3xl md:text-4xl font-light text-white tracking-[0.12em]">
             Evryn
           </Link>
           <a
