@@ -22,7 +22,7 @@ export default function Home() {
       </header>
 
       {/* Hero: Seed of Life + Tagline */}
-      <section className="text-center mb-12 md:mb-16 px-6">
+      <section className="text-center mb-6 px-6">
         {/* Logo has higher z-index than header — scrolls OVER it */}
         <div className="-mt-8 md:-mt-12 mb-0 md:mb-1 relative z-40">
           <Image
@@ -35,12 +35,12 @@ export default function Home() {
           />
         </div>
         <div className="text-xl md:text-2xl text-white/90 leading-relaxed md:leading-[1.8] max-w-3xl mx-auto mb-6">
-          <p>Imagine{"\u2006"}<span className="text-[rgba(194,89,59,0.9)] tracking-[0.2em]">...</span></p>
+          <p>Imagine{"\u2006"}<span className="text-[rgba(194,89,59,0.9)] tracking-[0.1em]">...</span></p>
           <p>if every time you needed someone</p>
           <p className="py-2 md:py-3">for <em>anything</em></p>
           <p>you had a trusted friend</p>
           <p>who really knew you</p>
-          <p className="pb-2 md:pb-3">and she'd just</p>
+          <p className="pb-2 md:pb-3">and she'd just{"\u2006"}<span className="text-[rgba(194,89,59,0.9)] tracking-[0.1em]">...</span></p>
           <p>find you the right person.</p>
           <p className="pt-3 md:pt-4">And not <em>just</em> the best fit for you</p>
           <p>but <em>also</em> someone she <em><span className="underline">trusted</span></em> enough</p>
@@ -55,9 +55,9 @@ export default function Home() {
       </section>
 
       {/* Three Pillars */}
-      <section className="mb-12 md:mb-16 pt-8 px-6 md:px-10">
+      <section className="mb-12 md:mb-16 pt-2 px-6 md:px-10">
         <div className="max-w-6xl mx-auto border-t border-white/20 pt-8">
-          <p className="text-2xl md:text-3xl text-white/90 mb-8">It's easy<span className="text-[rgba(194,89,59,0.9)] tracking-[0.2em]">...</span></p>
+          <p className="text-2xl md:text-3xl text-white/90 mb-8">It's easy<span className="text-[rgba(194,89,59,0.9)] tracking-[0.1em]">...</span></p>
           <div className="grid md:grid-cols-3 gap-8 md:gap-10">
 
             {/* Pillar 1 */}
@@ -98,7 +98,7 @@ export default function Home() {
       <section className="mb-10 md:mb-12 py-8 px-10 md:px-10">
         <div className="max-w-xl mx-auto border-t border-b border-white/20 py-8">
           <p className="text-xl md:text-2xl font-normal text-white/90 italic leading-relaxed mb-4">
-            I promise{"\u2006"}<span className="text-[rgba(194,89,59,0.9)] tracking-[0.2em] not-italic">...</span>
+            I promise{"\u2006"}<span className="text-[rgba(194,89,59,0.9)] tracking-[0.1em] not-italic">...</span>
           </p>
           <div className="text-base md:text-lg text-white/80 italic leading-relaxed space-y-4">
             <p>I take my time with the people I care about — so I'll never connect you to someone I don't personally trust.</p>
