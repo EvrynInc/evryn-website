@@ -40,7 +40,7 @@ export default function Home() {
           <p className="py-2 md:py-3">for <em>anything</em></p>
           <p>you had a trusted friend</p>
           <p>who really knew you</p>
-          <p>and she'd just<span className="text-[#C2593B]">...</span></p>
+          <p>and she'd just...</p>
           <p>find you the right person.</p>
           <p className="pt-3 md:pt-4">And not <em>just</em> the best fit for you</p>
           <p>but <em>also</em> someone she <em><span className="underline">trusted</span></em> enough</p>
@@ -94,24 +94,25 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Our Promise */}
+      {/* Evryn speaks — voice shift to first person */}
       <section className="mb-10 md:mb-12 py-8 px-6 md:px-10">
         <div className="max-w-6xl mx-auto border-t border-b border-white/20 py-8">
-          <h2 className="text-xl md:text-2xl font-normal text-white mb-3">
-            Our promise
-          </h2>
-          <p className="text-base text-white/80 leading-relaxed max-w-2xl">
-            No more subscriptions that don't deliver. You pay only when a connection genuinely works for you. Evryn's success and your success are always the same thing.
+          <p className="text-xl md:text-2xl font-normal text-white/90 italic leading-relaxed mb-4">
+            I promise<span className="text-[#C2593B] not-italic">...</span>
           </p>
+          <div className="text-base md:text-lg text-white/80 italic leading-relaxed max-w-2xl space-y-4">
+            <p>I take my time with the people I care about — so I'll never connect you to someone I don't personally trust.</p>
+            <p>And you only pay when a connection genuinely works — and <span className="underline">you</span> decide the price. Because I only do business with people I trust.</p>
+            <p>Trust is sacred to me. I've got your back.</p>
+            <p className="pt-2">I can't wait to meet you.</p>
+          </div>
+          <p className="text-base text-white/60 italic mt-4">— Evryn</p>
         </div>
       </section>
 
       {/* Waitlist Section */}
       <section id="waitlist" className="text-center mb-16 px-6 md:px-10">
         <div className="max-w-6xl mx-auto">
-          <p className="text-xl md:text-2xl text-white italic mb-10 md:mb-12">
-            "I can't wait to meet you." — Evryn
-          </p>
           <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 md:p-8 max-w-xl mx-auto border border-white/20">
             <WaitlistForm />
           </div>
