@@ -55,7 +55,7 @@ export default function Home() {
       </section>
 
       {/* Three Pillars */}
-      <section className="mb-12 md:mb-16 pt-4 px-6 md:px-10">
+      <section className="mb-4 md:mb-6 pt-4 px-6 md:px-10">
         <div className="max-w-6xl mx-auto border-t border-white/20 pt-8">
           <p className="text-2xl md:text-3xl font-normal text-white/90 mb-6">It's easy<span className="text-[rgba(198,97,59,0.9)] tracking-[0.1em]">...</span></p>
           <div className="grid md:grid-cols-3 gap-8 md:gap-10">
@@ -95,8 +95,8 @@ export default function Home() {
       </section>
 
       {/* Evryn speaks — voice shift to first person, inset like a personal note */}
-      <section className="mb-10 md:mb-12 py-8 px-10 md:px-10">
-        <div className="max-w-xl mx-auto border-t border-b border-white/20 py-8">
+      <section className="mb-4 md:mb-6 py-8 px-10 md:px-10">
+        <div className="max-w-xl mx-auto border-t border-white/20 pt-8 pb-4">
           <p className="text-2xl md:text-3xl font-normal text-white/90 italic leading-relaxed mb-4">
             I promise{"\u2006"}<span className="text-[rgba(198,97,59,0.9)] tracking-[0.1em] not-italic">...</span>
           </p>
