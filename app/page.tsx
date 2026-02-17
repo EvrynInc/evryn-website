@@ -35,7 +35,7 @@ export default function Home() {
           />
         </div>
         <div className="text-xl md:text-2xl text-white/90 leading-relaxed md:leading-[1.8] max-w-3xl mx-auto mb-10">
-          <p>Imagine{"\u200A"}<span className="text-[rgba(194,89,59,0.5)]">...</span></p>
+          <p>Imagine{"\u200A"}<span className="text-[rgba(194,89,59,0.9)]">...</span></p>
           <p>if every time you needed someone</p>
           <p className="py-2 md:py-3">for <em>anything</em></p>
           <p>you had a trusted friend</p>
@@ -52,15 +52,12 @@ export default function Home() {
         <p className="text-2xl md:text-3xl text-white font-normal">
           who finds you <em>your</em> people.
         </p>
-        <p className="text-xl md:text-2xl text-white/90 mt-2">
-          For anything in life.
-        </p>
       </section>
 
       {/* Three Pillars */}
       <section className="mb-12 md:mb-16 pt-8 px-6 md:px-10">
         <div className="max-w-6xl mx-auto border-t border-white/20 pt-8">
-          <p className="text-2xl md:text-3xl text-white/90 mb-8">It's easy<span className="text-[rgba(194,89,59,0.7)]">...</span></p>
+          <p className="text-2xl md:text-3xl text-white/90 mb-8">It's easy<span className="text-[rgba(194,89,59,0.9)]">...</span></p>
           <div className="grid md:grid-cols-[1fr_1fr_1.3fr] gap-8 md:gap-10">
 
             {/* Pillar 1 */}
