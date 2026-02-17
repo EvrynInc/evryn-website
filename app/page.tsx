@@ -6,15 +6,15 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-[#6DBAC4] relative z-[2]">
 
-      {/* Sticky Header — same bg so it's invisible at first, content scrolls behind it */}
-      <header className="sticky top-0 z-30 bg-[#6DBAC4] pt-3 pb-1 px-6">
-        <div className="max-w-4xl mx-auto flex items-center justify-between">
+      {/* Sticky Header — slightly lighter bg for subtle scroll separation */}
+      <header className="sticky top-0 z-30 bg-[#70BDC7] pt-3 pb-1 px-6 md:px-10">
+        <div className="max-w-6xl mx-auto flex items-center justify-between">
           <Link href="/" className="text-2xl md:text-3xl font-light text-white tracking-[0.12em]">
             Evryn
           </Link>
           <a
             href="#waitlist"
-            className="px-5 py-2 rounded-full bg-white/20 hover:bg-white/30 border border-white/30 text-white text-sm font-normal transition-colors"
+            className="px-4 py-1.5 rounded-xl bg-white/10 border border-white/20 text-white text-sm font-light transition-colors hover:bg-white/15"
           >
             Join waitlist
           </a>
@@ -24,7 +24,7 @@ export default function Home() {
       {/* Hero: Seed of Life + Tagline */}
       <section className="text-center mb-12 md:mb-16 px-6">
         {/* Logo has higher z-index than header — scrolls OVER it */}
-        <div className="-mt-4 md:-mt-8 mb-2 md:mb-3 relative z-40">
+        <div className="-mt-8 md:-mt-12 mb-0 md:mb-1 relative z-40">
           <Image
             src="/seed-of-life.svg"
             alt="Seed of Life"
@@ -34,15 +34,15 @@ export default function Home() {
             priority
           />
         </div>
-        <div className="text-xl md:text-2xl text-white/90 leading-loose max-w-3xl mx-auto mb-10">
+        <div className="text-xl md:text-2xl text-white/90 leading-relaxed md:leading-loose max-w-3xl mx-auto mb-10">
           <p>Imagine...</p>
           <p>if every time you needed someone</p>
-          <p className="py-3">for <em>anything</em></p>
+          <p className="py-2 md:py-3">for <em>anything</em></p>
           <p>you had a trusted friend</p>
           <p>who really knew you</p>
           <p>and she'd just...</p>
           <p>find you the right person.</p>
-          <p className="pt-4">And not <em>just</em> the best fit for you</p>
+          <p className="pt-3 md:pt-4">And not <em>just</em> the best fit for you</p>
           <p>but <em>also</em> someone she <em><span className="underline">trusted</span></em> enough</p>
           <p>to bring into your life.</p>
         </div>
@@ -54,10 +54,10 @@ export default function Home() {
         </p>
       </section>
 
-      {/* Three Pillars — full-width edge-to-edge */}
-      <section className="mb-12 md:mb-16 pt-8 px-6 border-t border-[#C2593B]">
-        <div className="max-w-4xl mx-auto">
-          <p className="text-2xl md:text-3xl text-white/90 mb-8">It's easy...</p>
+      {/* Three Pillars */}
+      <section className="mb-12 md:mb-16 pt-8 px-6 md:px-10">
+        <div className="max-w-6xl mx-auto border-t border-[#C2593B] pt-8">
+          <p className="text-2xl md:text-3xl text-white/90 mb-8 text-center">It's easy...</p>
           <div className="grid md:grid-cols-[1fr_1fr_1.3fr] gap-8 md:gap-10">
 
             {/* Pillar 1 */}
@@ -95,8 +95,8 @@ export default function Home() {
       </section>
 
       {/* Our Promise */}
-      <section className="mb-10 md:mb-12 py-8 px-6 border-t border-b border-[#C2593B]">
-        <div className="max-w-4xl mx-auto">
+      <section className="mb-10 md:mb-12 py-8 px-6 md:px-10">
+        <div className="max-w-6xl mx-auto border-t border-b border-[#C2593B] py-8">
           <h2 className="text-xl md:text-2xl font-normal text-white mb-3">
             Our promise
           </h2>
@@ -107,8 +107,8 @@ export default function Home() {
       </section>
 
       {/* Waitlist Section */}
-      <section id="waitlist" className="text-center mb-16 px-6">
-        <div className="max-w-4xl mx-auto">
+      <section id="waitlist" className="text-center mb-16 px-6 md:px-10">
+        <div className="max-w-6xl mx-auto">
           <p className="text-xl md:text-2xl text-white italic mb-10 md:mb-12">
             "I can't wait to meet you." — Evryn
           </p>
@@ -119,8 +119,8 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="text-center pt-8 px-6 border-t border-[#C2593B]">
-        <div className="max-w-4xl mx-auto pb-12 md:pb-20">
+      <footer className="pt-8 px-6 md:px-10">
+        <div className="max-w-6xl mx-auto border-t border-[#C2593B] pt-8 pb-12 md:pb-20 text-center">
           <p className="text-lg text-white mb-4">
             Find <em>your</em> people.
           </p>
