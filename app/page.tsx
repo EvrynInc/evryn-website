@@ -7,7 +7,7 @@ export default function Home() {
     <main className="min-h-screen bg-gradient-to-b from-[#6DBAC4] to-[#5AABB8] relative z-[2]">
 
       {/* Sticky Header — matches top of gradient, separates naturally as page darkens below */}
-      <header className="sticky top-0 z-30 bg-[#6DBAC4] pt-3 pb-1 px-6 md:px-10">
+      <header className="sticky top-0 z-30 bg-[#6DBAC4] pt-3 pb-3 px-6 md:px-10">
         <div className="max-w-6xl mx-auto flex items-center justify-between">
           <Link href="/" className="text-3xl md:text-4xl font-light text-white tracking-[0.12em]">
             Evryn
@@ -35,7 +35,7 @@ export default function Home() {
           />
         </div>
         <div className="text-xl md:text-2xl text-white/90 leading-relaxed md:leading-[1.8] max-w-3xl mx-auto mb-6">
-          <p className="text-2xl md:text-3xl font-normal"><span className="invisible tracking-[0.1em]">..</span>{"\u2006"}Imagine{"\u2006"}<span className="text-[rgba(194,89,59,0.9)] tracking-[0.1em]">...</span></p>
+          <p className="text-2xl md:text-3xl font-normal"><span className="invisible tracking-[0.1em]">..</span>{"\u2006"}Imagine{"\u2006"}<span className="text-[rgba(198,97,59,0.9)] tracking-[0.1em]">...</span></p>
           <p>if every time you needed someone</p>
           <p className="py-2 md:py-3">for <em>anything</em></p>
           <p>you had a trusted friend</p>
@@ -57,7 +57,7 @@ export default function Home() {
       {/* Three Pillars */}
       <section className="mb-12 md:mb-16 pt-4 px-6 md:px-10">
         <div className="max-w-6xl mx-auto border-t border-white/20 pt-8">
-          <p className="text-2xl md:text-3xl font-normal text-white/90 mb-6">It's easy<span className="text-[rgba(194,89,59,0.9)] tracking-[0.1em]">...</span></p>
+          <p className="text-2xl md:text-3xl font-normal text-white/90 mb-6">It's easy<span className="text-[rgba(198,97,59,0.9)] tracking-[0.1em]">...</span></p>
           <div className="grid md:grid-cols-3 gap-8 md:gap-10">
 
             {/* Pillar 1 */}
@@ -98,7 +98,7 @@ export default function Home() {
       <section className="mb-10 md:mb-12 py-8 px-10 md:px-10">
         <div className="max-w-xl mx-auto border-t border-b border-white/20 py-8">
           <p className="text-2xl md:text-3xl font-normal text-white/90 italic leading-relaxed mb-4">
-            I promise{"\u2006"}<span className="text-[rgba(194,89,59,0.9)] tracking-[0.1em] not-italic">...</span>
+            I promise{"\u2006"}<span className="text-[rgba(198,97,59,0.9)] tracking-[0.1em] not-italic">...</span>
           </p>
           <div className="text-base md:text-lg text-white/80 italic leading-relaxed space-y-4">
             <p>I take my time with the people I care about — so I'll never connect you to someone I don't personally trust.</p>
