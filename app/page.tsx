@@ -23,8 +23,8 @@ export default function Home() {
 
       {/* Hero: Seed of Life + Tagline */}
       <section className="text-center mb-6 px-6">
-        {/* Logo has higher z-index than header — scrolls OVER it */}
-        <div className="-mt-8 md:-mt-12 mb-0 md:mb-1 relative z-40">
+        {/* Logo slides under sticky header */}
+        <div className="-mt-8 md:-mt-12 mb-0 md:mb-1 relative z-20">
           <Image
             src="/seed-of-life.svg"
             alt="Seed of Life"
