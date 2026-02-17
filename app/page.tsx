@@ -57,7 +57,7 @@ export default function Home() {
       {/* Three Pillars */}
       <section className="mb-12 md:mb-16 pt-4 px-6 md:px-10">
         <div className="max-w-6xl mx-auto border-t border-white/20 pt-8">
-          <p className="text-2xl md:text-3xl font-normal text-white/90 mb-8">It's easy<span className="text-[rgba(194,89,59,0.9)] tracking-[0.1em]">...</span></p>
+          <p className="text-2xl md:text-3xl font-normal text-white/90 mb-4">It's easy<span className="text-[rgba(194,89,59,0.9)] tracking-[0.1em]">...</span></p>
           <div className="grid md:grid-cols-3 gap-8 md:gap-10">
 
             {/* Pillar 1 */}
