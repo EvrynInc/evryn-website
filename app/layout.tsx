@@ -9,7 +9,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Evryn finds you your people",
+  title: "Evryn Finds You Your People",
   description: "Evryn is a personal AI who finds you just the right people — for anything. And she only connects you to people she trusts.",
   keywords: ["Evryn", "Evryn AI", "AI matchmaking", "find your people", "find soulmate", "find a cofounder", "trusted connections", "AI dating", "meet people", "AI introductions"],
   authors: [{ name: "Evryn Inc." }],
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     apple: "/favicon.svg",
   },
   openGraph: {
-    title: "Evryn finds you your people",
+    title: "Evryn Finds You Your People",
     description: "Evryn is a personal AI who finds you just the right people — for anything. And she only connects you to people she trusts.",
     url: "https://evryn.ai",
     siteName: "Evryn AI",
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Evryn finds you your people",
+    title: "Evryn Finds You Your People",
     description: "Evryn is a personal AI who finds you just the right people — for anything. And she only connects you to people she trusts.",
   },
   robots: {
