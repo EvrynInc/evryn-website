@@ -34,7 +34,7 @@ export default function Home() {
             priority
           />
         </div>
-        <div className="text-xl md:text-2xl text-white/90 leading-relaxed md:leading-loose max-w-3xl mx-auto mb-10">
+        <div className="text-xl md:text-2xl text-white/90 leading-relaxed md:leading-[1.8] max-w-3xl mx-auto mb-10">
           <p>Imagine<span className="text-[#C2593B]">...</span></p>
           <p>if every time you needed someone</p>
           <p className="py-2 md:py-3">for <em>anything</em></p>
