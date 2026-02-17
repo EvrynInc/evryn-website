@@ -6,7 +6,11 @@
       "Bash(git add:*)",
       "Bash(git commit -m \"$\\(cat <<''EOF''\n#lock: Complete website documentation update\n\nCLAUDE.md:\n- Updated status to \"COMPLETE and LIVE\"\n- Added all new key files \\(analytics, SEO, banner generator\\)\n\nDECISIONS.md:\n- Added decisions 17-19 \\(Vercel Analytics, SEO setup, banner generator\\)\n\nBanner generator:\n- Added documentation comment for future reference\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
       "Bash(git push)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(gh repo create:*)",
+      "Bash(winget install:*)",
+      "Bash(git remote add:*)",
+      "Bash(git push:*)"
     ]
   }
 }

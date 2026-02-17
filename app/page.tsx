@@ -128,7 +128,7 @@ export default function Home() {
             </Link>
           </p>
           <p className="text-white/40 text-sm">
-            © 2025 Evryn, Inc.
+            © 2025–2026 Evryn, Inc.
           </p>
         </footer>
 

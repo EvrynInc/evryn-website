@@ -238,11 +238,18 @@ Things to do when there's time, roughly in order of impact:
 - [ ] Create AngelList/Wellfound profile (same idea)
 - [ ] Product Hunt launch (when ready for public attention)
 
+**SEO Content (big needle-movers when ready):**
+- [ ] FAQ section on landing page (helps Google understand what Evryn is; targets long-tail searches like "how does AI matchmaking work")
+- [ ] Blog with longer-form content (builds topical authority, creates more indexable pages, targets keyword variations)
+- [ ] These matter more than meta tags — on-page content is what Google actually ranks
+
 **Already done:**
 - [x] Justin's LinkedIn Contact Info links to evryn.ai
 - [x] Google Search Console set up, sitemap submitted
 - [x] Vercel Analytics enabled
 - [x] SEO meta tags and Open Graph images
+- [x] Organization structured data (JSON-LD) for brand recognition
+- [x] Updated title to include "Evryn AI" to combat Google autocorrect to "Everlyn"
 
 ## End of Session: #lock
 
