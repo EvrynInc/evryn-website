@@ -40,21 +40,17 @@ This is NOT the main product/app - that will be built separately.
 
 ## Current Status
 
-**As of 2026-02-16:** Website is COMPLETE and LIVE at evryn.ai. SEO refresh just deployed.
+**As of 2026-02-17:** Website is COMPLETE and LIVE at evryn.ai. Design refresh deployed.
 
 **What's working:**
-- Landing page with waitlist form
+- Landing page with waitlist form (design refresh completed 2026-02-17)
 - Form submits to HubSpot (first name, last name, email required, phone optional → mobilephone)
 - Cloudflare Turnstile captcha (invisible mode)
-- SEO: updated title ("Evryn | Your Personal AI Who Finds You Your People"), stronger descriptions, Organization JSON-LD structured data, expanded keywords
+- SEO: updated title, stronger descriptions, Organization JSON-LD structured data, expanded keywords
 - Open Graph images and Twitter cards for social sharing
 - Vercel Analytics tracking visitors
 - Google Search Console set up, sitemap submitted
 - Privacy policy page
-
-**Pending (design refresh):**
-- Spec in `2026.02.12_Website_Changes_Spec.md` — font change (Karla), paper texture, terracotta dividers, sticky header with logo scroll-over, hero spacing, pillars full-width, copy tweaks
-- Should be done on a feature branch for Vercel preview before merging
 
 **Production setup:**
 - Vercel project: `evryn-website`
@@ -68,66 +64,80 @@ This is NOT the main product/app - that will be built separately.
 **Feeling:** Calm, spacious, trustworthy. Like a wise friend, not a tech startup. Let the words breathe.
 
 **Color palette:**
-- Background: Solid teal `#6DBAC4`
-- Text: White/light cream for contrast
-- Form elements: White/10 with white/20 borders (translucent)
+- Background: Teal gradient `#6DBAC4` → `#5AABB8` (lagoon deepening effect)
+- Accent: Terracotta `rgba(194,89,59,0.9)` on ellipses only (Imagine..., It's easy..., I promise...)
+- Text: White/white-alpha for contrast
+- Dividers: `white/20` horizontal lines
+- Form elements: White/10 with white/20 borders (translucent glass card)
 
 **Typography:**
-- Font: Inter for everything
-- "Evryn" wordmark: Inter with letter-spacing (`tracking-[0.2em]`) in header
+- Font: Karla (weights 300 light, 400 normal)
+- Body: font-light (300)
+- Structural anchors (Imagine, It's easy, I promise) and pillar headlines: font-normal (400)
+- Hero tagline ("Evryn is your personal AI..."): font-normal (400)
+- "Evryn" wordmark: `tracking-[0.12em]` in header
+- Ellipsis dots: `tracking-[0.1em]` for subtle spread
 
-**Key visual:** Seed of Life geometry as standalone SVG (`public/seed-of-life.svg`) - centered in hero, overlapping into header via negative margin
+**Paper texture:** SVG noise filter overlay on body::before (fractalNoise, opacity 0.14, mix-blend-mode overlay)
 
-**Responsive:** Works on mobile and desktop. Pillars stack on mobile, side-by-side on desktop.
+**Key visual:** Seed of Life geometry as standalone SVG (`public/seed-of-life.svg`) - centered in hero, overlapping into header via negative margin. Logo z-40 scrolls OVER sticky header z-30.
+
+**Responsive:** Works on mobile and desktop. Pillars stack on mobile, 3-column grid on desktop. Line-height: `leading-relaxed` on mobile, `leading-[1.8]` on desktop for hero poem. Max-width `max-w-6xl` consistent across header, pillars, and footer.
 
 ## Landing Page Structure
 
-### Header
-- "Evryn" wordmark (left)
-- "Join waitlist" link (right, scrolls to form)
+### Header (sticky)
+- "Evryn" wordmark (left, `tracking-[0.12em]`)
+- "Join waitlist" pill button (right, glass card style, scrolls to form)
+- Sticky with `bg-[#6DBAC4]` — separates naturally as page gradient darkens below
 
 ### Hero
-Seed of Life SVG (large, overlaps header), then poetic copy broken into lines:
+Seed of Life SVG (large, z-40 overlaps header), then poetic copy broken into lines:
 
 ```
-Imagine...
+Imagine...                    ← terracotta ellipsis, optically centered with invisible counterweight
 if every time you needed someone
-for anything
+for anything                  ← breathing pause (py-2/py-3)
 you had a trusted friend
 who really knew you
-and she'd just...
+and she'd just               ← breathing pause (pb-2/pb-3)
 find you the right person.
-
+                              ← stanza break (pt-3/pt-4)
 And not just the best fit for you
 but also someone she trusted enough
 to bring into your life.
 ```
 
-(Note: "anything", "just", "also", and "trusted" are italicized; "trusted" also has underline)
+(Note: "anything", "just", "also" are italicized; "trusted" is italic + underlined)
 
 Then:
 **Evryn is your personal AI**
 **who finds you *your* people.**
 
 ### Pillars Section
-Opens with "It's easy..." then three columns:
+Opens with "It's easy..." (terracotta ellipsis) then three equal columns:
 
 **1. You just talk to Evryn**
-She listens, learns what you actually need, and continues to deepen her understanding of you. No searching. No swiping. No profiles to build.
+She listens, she gets to know you, and she discovers what you actually need. No searching. No swiping. No profiles to build.
 
-**2. She finds *your* people**
-Whoever you need: soulmate, cofounder, crew, someone fun — even that *just-right* tutor, or just someone to buy an old couch. Not *more* options. The *right* ones.
+**2. She finds you *your* people**
+Just the right fit: soulmate, cofounder, crew, someone fun — even just the right tutor, or just someone to buy an old couch. Not *more* options. The *right* ones.
 
 **3. She guards your gates**
-No public profile and no open messaging means there's simply no way for pesterers, creeps, spammers, or scammers to even find you. Evryn only connects someone if she trusts them enough to connect them to you.
+No public profile and no open messaging means there's simply no way for pesterers, creeps, spammers, or scammers to even know you exist. Evryn only connects you to someone if she trusts them enough.
 
-### Our Promise
-No more subscriptions that don't deliver. You pay only when a connection genuinely works for you. Evryn's success and your success are always the same thing.
+### "I promise..." Section (Evryn speaks in first person)
+Voice shifts from narrator to Evryn speaking directly. Italic text, inset with `max-w-xl`, bordered top and bottom. Terracotta ellipsis on "I promise..."
+
+Key copy:
+- "I take my time with the people I care about — so I'll never connect you to someone I don't personally trust."
+- "And you don't pay a penny unless a connection genuinely works — and *you* decide the price. Because I would only connect you to others if I trusted you *that* *much*."
+- "Trust is sacred to me. I've got your back."
+- "I can't wait to meet you!"
+- "— Evryn"
 
 ### Waitlist Section
-Quote: "I can't wait to meet you." — Evryn
-
-Form inside bordered container with "Join the Waitlist" heading:
+Form inside glass card container (`bg-white/10`, `backdrop-blur-sm`, `rounded-2xl`) with "Join the Waitlist" heading:
 - First name / Last name (side by side)
 - Email (required)
 - Phone (optional)
@@ -255,6 +265,7 @@ Things to do when there's time, roughly in order of impact:
 - [x] SEO meta tags and Open Graph images
 - [x] Organization structured data (JSON-LD) for brand recognition
 - [x] Updated title to include "Evryn AI" to combat Google autocorrect to "Everlyn"
+- [x] Design refresh: Karla font, paper texture, gradient background, terracotta accents, sticky header, "I promise..." section, copy refinements
 
 ## End of Session: #lock
 

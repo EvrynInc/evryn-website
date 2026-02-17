@@ -329,6 +329,87 @@ Justin (founder, non-technical) is building Evryn with AI assistance. Previously
 
 ---
 
+## 2026-02-17: Design Refresh
+
+### Context
+Landing page was functional but visually plain. Justin created a design spec (`2026.02.12_Website_Changes_Spec.md`) calling for font changes, texture, and layout improvements. Work done on `feature/design-refresh` branch with Vercel preview for iterative review.
+
+### Decisions Made
+
+#### 20. Font: Karla (Not Inter)
+
+**Decision:** Switch from Inter to Karla for all typography.
+
+**Why:** Warmer, more human feel that matches Evryn's personality — like a wise friend, not a tech startup. Weight 300 (light) for body, 400 (normal) for structural anchors and headlines.
+
+---
+
+#### 21. Terracotta Accent on Ellipses Only
+
+**Decision:** Use terracotta `rgba(194,89,59,0.9)` exclusively on the three structural ellipses: "Imagine...", "It's easy...", "I promise..."
+
+**Alternatives tried:**
+- Terracotta on horizontal divider lines (too intense, "drops of blood")
+- Varying opacities for different elements (inconsistent)
+- Terracotta on a fourth "just..." ellipsis (broke the clean trio)
+
+**Why:** The trio creates a narrative spine — invitation → explanation → voice shift. Terracotta marks them as the page's structural beats. Consistent 90% opacity across all three.
+
+---
+
+#### 22. Background Gradient Instead of Solid Color
+
+**Decision:** Replace solid `#6DBAC4` background with gradient from `#6DBAC4` to `#5AABB8`.
+
+**Why:** Solves header scroll separation without JavaScript. Sticky header stays at `#6DBAC4` (top of gradient) while page darkens below, creating natural visual separation as you scroll. Pure CSS, no client-side scroll listeners.
+
+---
+
+#### 23. "I promise..." Section — Evryn Speaks in First Person
+
+**Decision:** Replace the third-person "Our Promise" section with a first-person "I promise..." section where Evryn speaks directly to the reader.
+
+**Why:** Creates a voice shift that's the emotional climax of the page. The narrator introduces Evryn (hero + pillars), then Evryn herself steps forward. Italic text + signature "— Evryn" + inset width (`max-w-xl`) distinguish it as a personal note.
+
+**Key copy decisions within this section:**
+- "you don't pay a penny unless" (stronger than "you only pay when")
+- "you decide the price" with "you" underlined
+- "Because I would only connect you to others if I trusted you *that* *much*" — avoids implying Evryn already trusts a stranger
+- "that" and "much" independently underlined (not one continuous underline)
+- Exclamation on "I can't wait to meet you!" — earned enthusiasm
+
+---
+
+#### 24. Paper Texture Overlay
+
+**Decision:** Add subtle SVG noise filter overlay on `body::before` for a paper/stationery feel.
+
+**Implementation:** fractalNoise SVG filter, opacity 0.14, mix-blend-mode overlay, pointer-events none. Fixed position covers full viewport.
+
+**Why:** Adds warmth and tactility without imagery. Subtle enough to not interfere with readability.
+
+---
+
+#### 25. Consistent Max-Width Across Page
+
+**Decision:** Use `max-w-6xl` (1152px) for header, pillars section, and footer.
+
+**Previous:** `max-w-4xl` (896px) felt too narrow — "2003 vertical column" feel.
+
+**Why:** Modern, spacious layout that breathes. Pillar content fills the width meaningfully. Header wordmark and button stay at page edges until max-width kicks in.
+
+---
+
+#### 26. Optical Centering for "Imagine..."
+
+**Decision:** Add invisible counterweight dots before "Imagine" to optically center the word despite the visible ellipsis after it.
+
+**Implementation:** `<span class="invisible tracking-[0.1em]">..</span>` before the word. Two invisible dots (not three) — splits the difference between centering the word alone and centering word+ellipsis.
+
+**Why:** Three dots overcompensated (too far right), zero dots left it visually left-heavy. Two dots hit the perceptual sweet spot.
+
+---
+
 ## Template for Future Decisions
 
 ```
