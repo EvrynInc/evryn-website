@@ -4,17 +4,17 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#6DBAC4] relative z-[2]">
+    <main className="min-h-screen bg-gradient-to-b from-[#6DBAC4] to-[#5AABB8] relative z-[2]">
 
-      {/* Sticky Header — slightly lighter bg for subtle scroll separation */}
-      <header className="sticky top-0 z-30 bg-[#70BDC7] pt-3 pb-1 px-6 md:px-10">
+      {/* Sticky Header — matches top of gradient, separates naturally as page darkens below */}
+      <header className="sticky top-0 z-30 bg-[#6DBAC4] pt-3 pb-1 px-6 md:px-10">
         <div className="max-w-6xl mx-auto flex items-center justify-between">
           <Link href="/" className="text-2xl md:text-3xl font-light text-white tracking-[0.12em]">
             Evryn
           </Link>
           <a
             href="#waitlist"
-            className="px-4 py-1.5 rounded-xl bg-white/10 border border-white/20 text-white text-sm font-light transition-colors hover:bg-white/15"
+            className="px-4 py-1.5 rounded-full bg-white/10 border border-white/20 text-white text-sm font-light transition-colors hover:bg-white/15"
           >
             Join waitlist
           </a>
@@ -35,12 +35,12 @@ export default function Home() {
           />
         </div>
         <div className="text-xl md:text-2xl text-white/90 leading-relaxed md:leading-loose max-w-3xl mx-auto mb-10">
-          <p>Imagine...</p>
+          <p>Imagine<span className="text-[#C2593B]">...</span></p>
           <p>if every time you needed someone</p>
           <p className="py-2 md:py-3">for <em>anything</em></p>
           <p>you had a trusted friend</p>
           <p>who really knew you</p>
-          <p>and she'd just...</p>
+          <p>and she'd just<span className="text-[#C2593B]">...</span></p>
           <p>find you the right person.</p>
           <p className="pt-3 md:pt-4">And not <em>just</em> the best fit for you</p>
           <p>but <em>also</em> someone she <em><span className="underline">trusted</span></em> enough</p>
@@ -56,8 +56,8 @@ export default function Home() {
 
       {/* Three Pillars */}
       <section className="mb-12 md:mb-16 pt-8 px-6 md:px-10">
-        <div className="max-w-6xl mx-auto border-t border-[#C2593B] pt-8">
-          <p className="text-2xl md:text-3xl text-white/90 mb-8 text-center">It's easy...</p>
+        <div className="max-w-6xl mx-auto border-t border-white/20 pt-8">
+          <p className="text-2xl md:text-3xl text-white/90 mb-8">It's easy<span className="text-[#C2593B]">...</span></p>
           <div className="grid md:grid-cols-[1fr_1fr_1.3fr] gap-8 md:gap-10">
 
             {/* Pillar 1 */}
@@ -86,7 +86,7 @@ export default function Home() {
                 She guards your gates
               </h2>
               <p className="text-base text-white/80 leading-relaxed">
-                No public profile and no open messaging means there's simply no way for pesterers, creeps, spammers, or scammers to even know you exist. Evryn only connects someone if she trusts them enough to connect them to you.
+                No public profile and no open messaging means there's simply no way for pesterers, creeps, spammers, or scammers to even know you exist. Evryn only connects you to someone if she trusts them enough.
               </p>
             </div>
 
@@ -96,7 +96,7 @@ export default function Home() {
 
       {/* Our Promise */}
       <section className="mb-10 md:mb-12 py-8 px-6 md:px-10">
-        <div className="max-w-6xl mx-auto border-t border-b border-[#C2593B] py-8">
+        <div className="max-w-6xl mx-auto border-t border-b border-white/20 py-8">
           <h2 className="text-xl md:text-2xl font-normal text-white mb-3">
             Our promise
           </h2>
@@ -120,7 +120,7 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="pt-8 px-6 md:px-10">
-        <div className="max-w-6xl mx-auto border-t border-[#C2593B] pt-8 pb-12 md:pb-20 text-center">
+        <div className="max-w-6xl mx-auto border-t border-white/20 pt-8 pb-12 md:pb-20 text-center">
           <p className="text-lg text-white mb-4">
             Find <em>your</em> people.
           </p>
