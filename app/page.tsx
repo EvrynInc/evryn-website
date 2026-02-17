@@ -35,7 +35,7 @@ export default function Home() {
           />
         </div>
         <div className="text-xl md:text-2xl text-white/90 leading-relaxed md:leading-[1.8] max-w-3xl mx-auto mb-10">
-          <p>Imagine{"\u2009"}<span className="text-[rgba(194,89,59,0.9)]">...</span></p>
+          <p>Imagine{"\u2006"}<span className="text-[rgba(194,89,59,0.9)]">...</span></p>
           <p>if every time you needed someone</p>
           <p className="py-2 md:py-3">for <em>anything</em></p>
           <p>you had a trusted friend</p>
@@ -58,7 +58,7 @@ export default function Home() {
       <section className="mb-12 md:mb-16 pt-8 px-6 md:px-10">
         <div className="max-w-6xl mx-auto border-t border-white/20 pt-8">
           <p className="text-2xl md:text-3xl text-white/90 mb-8">It's easy<span className="text-[rgba(194,89,59,0.9)]">...</span></p>
-          <div className="grid md:grid-cols-[1fr_1fr_1.3fr] gap-8 md:gap-10">
+          <div className="grid md:grid-cols-3 gap-8 md:gap-10">
 
             {/* Pillar 1 */}
             <div>
@@ -98,15 +98,15 @@ export default function Home() {
       <section className="mb-10 md:mb-12 py-8 px-10 md:px-10">
         <div className="max-w-xl mx-auto border-t border-b border-white/20 py-8">
           <p className="text-xl md:text-2xl font-normal text-white/90 italic leading-relaxed mb-4">
-            I promise{"\u2009"}<span className="text-[rgba(194,89,59,0.9)] not-italic">...</span>
+            I promise{"\u2006"}<span className="text-[rgba(194,89,59,0.9)] not-italic">...</span>
           </p>
           <div className="text-base md:text-lg text-white/80 italic leading-relaxed space-y-4">
             <p>I take my time with the people I care about — so I'll never connect you to someone I don't personally trust.</p>
-            <p>And you don't pay a penny unless a connection genuinely works — and <span className="underline">you</span> decide the price. Because I only connect people I trust — and that includes you.</p>
+            <p>And you don't pay a penny unless a connection genuinely works — and <span className="underline">you</span> decide the price. Because I would only connect you to others if I trusted you <span className="underline">that much</span>.</p>
             <p>Trust is sacred to me. I've got your back.</p>
-            <p className="pt-2">I can't wait to meet you.</p>
+            <p className="pt-2">I can't wait to meet you!</p>
           </div>
-          <p className="text-base text-white/60 italic mt-4">— Evryn</p>
+          <p className="text-base md:text-lg text-white/80 italic mt-4">— Evryn</p>
         </div>
       </section>
 
