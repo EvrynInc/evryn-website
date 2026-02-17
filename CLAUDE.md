@@ -40,16 +40,21 @@ This is NOT the main product/app - that will be built separately.
 
 ## Current Status
 
-**As of 2025-01-21:** Website is COMPLETE and LIVE at evryn.ai. Ready for traffic.
+**As of 2026-02-16:** Website is COMPLETE and LIVE at evryn.ai. SEO refresh just deployed.
 
 **What's working:**
 - Landing page with waitlist form
 - Form submits to HubSpot (first name, last name, email required, phone optional → mobilephone)
 - Cloudflare Turnstile captcha (invisible mode)
-- SEO meta tags, Open Graph images for social sharing
+- SEO: updated title ("Evryn | Your Personal AI Who Finds You Your People"), stronger descriptions, Organization JSON-LD structured data, expanded keywords
+- Open Graph images and Twitter cards for social sharing
 - Vercel Analytics tracking visitors
 - Google Search Console set up, sitemap submitted
 - Privacy policy page
+
+**Pending (design refresh):**
+- Spec in `2026.02.12_Website_Changes_Spec.md` — font change (Karla), paper texture, terracotta dividers, sticky header with logo scroll-over, hero spacing, pillars full-width, copy tweaks
+- Should be done on a feature branch for Vercel preview before merging
 
 **Production setup:**
 - Vercel project: `evryn-website`
@@ -136,7 +141,7 @@ Success message: "You're on the list!" / "We look forward to talking soon."
 ### Footer
 - "Find *your* people."
 - contact@evryn.ai | Privacy Policy
-- © 2025 Evryn, Inc.
+- © 2025–2026 Evryn, Inc.
 
 ## Tech Stack
 
