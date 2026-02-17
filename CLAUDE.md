@@ -197,10 +197,15 @@ For deeper context:
 
 ## Working Style
 
-Justin is non-technical but smart and thoughtful. When making changes:
-- Explain what you're doing and why
-- Keep code clean and readable
-- Simple is better than clever
+Justin is not an engineer — he was a filmmaker. Very smart and strategic, started with zero technical background (~Dec 2025), on a near-vertical learning curve.
+
+**Technical level (as of Feb 2026):** Solid on databases, APIs, git, env vars, dev vs prod. Emerging on TypeScript, CI/CD, testing, deployment. Picks things up fast.
+
+**Communication rules:**
+- **Concept first, then jargon.** Explain the idea in plain English, THEN use the technical term. This builds his vocabulary so he can contextualize dev-speak later.
+- **Name the pattern.** When Justin describes something that maps to a known engineering concept, tell him: "That's called X — it's a standard pattern for Y."
+- Breadcrumb everything — explain what commands do, where to run them
+- Simple over clever, explain reasoning
 - Ask for clarification rather than guessing on design/copy decisions
 - When in doubt about aesthetic choices, describe options and ask
 - **Proactively flag risks:** If Justin asks for something that could break functionality, cause accessibility issues, create technical debt, or have unintended consequences, speak up. Justin wants what he wants, but defers to technical judgment - don't let his non-technical perspective lead to broken things
