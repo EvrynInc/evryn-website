@@ -31,7 +31,7 @@ This is the public marketing website (evryn.ai). A single-page landing page with
 - Hero section with Seed of Life logo and poetic value proposition
 - "It's easy..." intro to three pillars
 - Three pillars explaining what makes Evryn different
-- "Our promise" section (payment model)
+- "I promise..." section (Evryn speaks in first person)
 - Waitlist signup (custom form → HubSpot API, with Turnstile captcha)
 - Privacy policy page
 - Footer
@@ -65,7 +65,7 @@ This is NOT the main product/app - that will be built separately.
 
 **Color palette:**
 - Background: Teal gradient `#6DBAC4` → `#5AABB8` (lagoon deepening effect)
-- Accent: Terracotta `rgba(194,89,59,0.9)` on ellipses only (Imagine..., It's easy..., I promise...)
+- Accent: Terracotta `rgba(198,97,59,0.9)` on ellipses only (Imagine..., It's easy..., I promise...)
 - Text: White/white-alpha for contrast
 - Dividers: `white/20` horizontal lines
 - Form elements: White/10 with white/20 borders (translucent glass card)
@@ -80,7 +80,7 @@ This is NOT the main product/app - that will be built separately.
 
 **Paper texture:** SVG noise filter overlay on body::before (fractalNoise, opacity 0.14, mix-blend-mode overlay)
 
-**Key visual:** Seed of Life geometry as standalone SVG (`public/seed-of-life.svg`) - centered in hero, overlapping into header via negative margin. Logo z-40 scrolls OVER sticky header z-30.
+**Key visual:** Seed of Life geometry as standalone SVG (`public/seed-of-life.svg`) - centered in hero, overlapping into header via negative margin. Logo z-20 slides UNDER sticky header z-30 (so header stays clean on mobile).
 
 **Responsive:** Works on mobile and desktop. Pillars stack on mobile, 3-column grid on desktop. Line-height: `leading-relaxed` on mobile, `leading-[1.8]` on desktop for hero poem. Max-width `max-w-6xl` consistent across header, pillars, and footer.
 
@@ -92,7 +92,7 @@ This is NOT the main product/app - that will be built separately.
 - Sticky with `bg-[#6DBAC4]` — separates naturally as page gradient darkens below
 
 ### Hero
-Seed of Life SVG (large, z-40 overlaps header), then poetic copy broken into lines:
+Seed of Life SVG (large, z-20 slides under header), then poetic copy broken into lines:
 
 ```
 Imagine...                    ← terracotta ellipsis, optically centered with invisible counterweight
@@ -127,7 +127,7 @@ Just the right fit: soulmate, cofounder, crew, someone fun — even just the rig
 No public profile and no open messaging means there's simply no way for pesterers, creeps, spammers, or scammers to even know you exist. Evryn only connects you to someone if she trusts them enough.
 
 ### "I promise..." Section (Evryn speaks in first person)
-Voice shifts from narrator to Evryn speaking directly. Italic text, inset with `max-w-xl`, bordered top and bottom. Terracotta ellipsis on "I promise..."
+Voice shifts from narrator to Evryn speaking directly. Italic text, inset with `max-w-xl`, bordered top only (no bottom border — flows directly into waitlist as one continuous invitation area). Terracotta ellipsis on "I promise..."
 
 Key copy:
 - "I take my time with the people I care about — so I'll never connect you to someone I don't personally trust."

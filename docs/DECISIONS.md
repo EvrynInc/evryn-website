@@ -346,7 +346,7 @@ Landing page was functional but visually plain. Justin created a design spec (`2
 
 #### 21. Terracotta Accent on Ellipses Only
 
-**Decision:** Use terracotta `rgba(194,89,59,0.9)` exclusively on the three structural ellipses: "Imagine...", "It's easy...", "I promise..."
+**Decision:** Use terracotta `rgba(198,97,59,0.9)` exclusively on the three structural ellipses: "Imagine...", "It's easy...", "I promise..."
 
 **Alternatives tried:**
 - Terracotta on horizontal divider lines (too intense, "drops of blood")
@@ -407,6 +407,46 @@ Landing page was functional but visually plain. Justin created a design spec (`2
 **Implementation:** `<span class="invisible tracking-[0.1em]">..</span>` before the word. Two invisible dots (not three) — splits the difference between centering the word alone and centering word+ellipsis.
 
 **Why:** Three dots overcompensated (too far right), zero dots left it visually left-heavy. Two dots hit the perceptual sweet spot.
+
+---
+
+## 2026-02-17: Post-Refresh Polish
+
+### Context
+After merging the design refresh, iterative polish on color, spacing, and mobile behavior based on Justin reviewing on phone and desktop.
+
+### Decisions Made
+
+#### 27. Terracotta Warmed to "Wood" Tone
+
+**Decision:** Shift terracotta from `rgba(194,89,59,0.9)` to `rgba(198,97,59,0.9)`.
+
+**Alternatives tried:**
+- Original `rgba(194,89,59,0.9)` — too blood-like
+- Warmer `rgba(201,105,58,0.9)` — too orange
+- Split the difference `rgba(198,97,59,0.9)` — "almost reads as wood"
+
+**Why:** The midpoint hit the sweet spot — warm and organic without being either bloody or orange.
+
+---
+
+#### 28. Logo Slides Under Header (Not Over)
+
+**Decision:** Change Seed of Life logo from z-40 (over header) to z-20 (under header).
+
+**Previous:** Logo scrolled over the sticky header for a layered effect.
+
+**Why:** On mobile, the logo scraped across the "Join waitlist" button during scroll, which looked broken. Having it slide under the header is cleaner and works on all screen sizes.
+
+---
+
+#### 29. "I promise..." Flows Into Waitlist (No Bottom Border)
+
+**Decision:** Remove the bottom horizontal line from the "I promise..." section. Tighten spacing between pillars → promise → waitlist.
+
+**Previous:** Section had `border-t` and `border-b`, with generous margins above and below.
+
+**Why:** The "I promise..." section and the waitlist form are conceptually one continuous invitation — Evryn speaking directly, then offering the signup. A divider line between them broke that flow. Tighter spacing reinforces that they belong together.
 
 ---
 
