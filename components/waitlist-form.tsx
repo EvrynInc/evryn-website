@@ -59,7 +59,7 @@ export function WaitlistForm() {
         sitekey: process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!,
         callback: (token: string) => setTurnstileToken(token),
         "expired-callback": () => setTurnstileToken(""),
-        theme: "dark",
+        theme: "light",
         appearance: "interaction-only",
       });
     }

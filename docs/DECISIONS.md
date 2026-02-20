@@ -450,6 +450,84 @@ After merging the design refresh, iterative polish on color, spacing, and mobile
 
 ---
 
+## 2026-02-19: Copy & Color Polish
+
+### Context
+Session Two of website tweaking. Started with accent color exploration, ended with significant copy improvements.
+
+### Decisions Made
+
+#### 30. All-White Palette (No Accent Color)
+
+**Decision:** Remove all terracotta/accent color. Everything is white on teal.
+
+**Extensive exploration tried:** Terracotta on ellipses only, on structural anchors + tagline, on horizontal lines, on the logo, desaturated reds, dark chocolate tones, dusty rose variants. Explored `rgba(185,92,88,0.9)` as a muted true red (G≈B eliminates orange).
+
+**Why we went all-white:** After hours of iteration, the page was cleanest and most confident with no accent color. The accent was trying to add a layer the page didn't need — the words, whitespace, typography, and gradient already do the work. "Clean isn't amateurish — it's confident."
+
+---
+
+#### 31. Hero Tagline: "That's what Evryn does. / She finds you *your people*."
+
+**Decision:** Replace "Evryn is your personal AI / who finds you *your* people." with a two-line reveal.
+
+**Why:** "That's what Evryn does." bridges the poem's hypothetical ("imagine if...") to reality ("this exists"). Dropped "your personal AI" because the .ai domain handles that signal and people are wary of AI. "She" in the second line is warmer than repeating "Evryn". "*your people*" italicized as one phrase (a concept/gift, not just possessive emphasis).
+
+---
+
+#### 32. "also" Repositioned in Hero Poem
+
+**Decision:** Changed "but *also* someone she trusted enough" to "but someone she *also* trusted enough".
+
+**Why:** Original placement before "someone" created ambiguity — sounded like two people. Moving "also" to modify "trusted" (the verb) makes it clear: she doesn't just find you a good fit, she *also trusts them* enough.
+
+---
+
+#### 33. Promise Section Rewrite
+
+**Decision:** Complete restructure of Evryn's first-person promise.
+
+**Old:** "I take my time with the people I care about — so I'll never connect you to someone I don't personally trust. And you don't pay a penny unless a connection genuinely works — and *you* decide the price. Because I would only connect you to others if I trusted you *that much*. Trust is sacred to me. I've got your back."
+
+**New:**
+- "I only connect people I trust."
+- "And you don't pay a penny unless a connection genuinely works."
+- "And *you* decide the price — because like I said, I only connect people I trust."
+- "Trust is sacred to me."
+- "In my house, we take care of each other."
+
+**Key changes:**
+- Dropped meandering "I take my time" opener — starts with the promise directly
+- "like I said" callback is cheeky and confident — same words, different meaning each time (first: protecting you, second: explaining why you set the price)
+- "In my house, we take care of each other" — turns Evryn from a service into a *place* with values. Subtle warning to bad actors, warm invitation to good people
+- "Trust is sacred to me" kept as the conviction statement, paired with the actionable "we take care of each other"
+
+---
+
+#### 34. Pillar 2 Copy Tightened
+
+**Decision:** Changed "Not *more* options. The *right* ones." to "We don't need *more* options. Just the *right* ones." Also dropped redundant "just" before "someone to buy an old couch."
+
+**Why:** "We" pulls the reader in — collaborative rather than declarative.
+
+---
+
+#### 35. Turnstile Theme: Light
+
+**Decision:** Changed Cloudflare Turnstile challenge widget theme from "dark" to "light".
+
+**Why:** Better visual match with the light teal background when the challenge appears.
+
+---
+
+#### 36. Ellipsis Restored on "and she'd just..."
+
+**Decision:** Added trailing ellipsis back to "and she'd just..." in the hero poem.
+
+**Why:** Was removed during accent color experiments (too many colored elements). With all-white palette, the ellipsis works again as a natural poetic trailing-off.
+
+---
+
 ## Template for Future Decisions
 
 ```

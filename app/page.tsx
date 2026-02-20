@@ -35,29 +35,29 @@ export default function Home() {
           />
         </div>
         <div className="text-xl md:text-2xl text-white/90 leading-relaxed md:leading-[1.8] max-w-3xl mx-auto mb-6">
-          <p className="text-2xl md:text-3xl font-normal"><span className="invisible tracking-[0.1em]">..</span>{"\u2006"}Imagine{"\u2006"}<span className="text-[rgba(198,97,59,0.9)] tracking-[0.1em]">...</span></p>
+          <p className="text-2xl md:text-3xl font-normal text-white"><span className="invisible tracking-[0.1em]">..</span>{"\u2006"}Imagine{"\u2006"}<span className="tracking-[0.1em]">...</span></p>
           <p>if every time you needed someone</p>
           <p className="py-2 md:py-3">for <em>anything</em></p>
           <p>you had a trusted friend</p>
           <p>who really knew you</p>
-          <p className="pb-2 md:pb-3">and she'd just</p>
+          <p className="pb-2 md:pb-3">and she'd just...</p>
           <p>find you the right person.</p>
           <p className="pt-3 md:pt-4">And not <em>just</em> the best fit for you</p>
-          <p>but <em>also</em> someone she <em><span className="underline">trusted</span></em> enough</p>
+          <p>but someone she <em>also</em> <em><span className="underline">trusted</span></em> enough</p>
           <p>to bring into your life.</p>
         </div>
         <p className="text-2xl md:text-3xl text-white font-normal">
-          Evryn is your personal AI
+          That's what Evryn does.
         </p>
         <p className="text-2xl md:text-3xl text-white font-normal">
-          who finds you <em>your</em> people.
+          She finds you <em>your people</em>.
         </p>
       </section>
 
       {/* Three Pillars */}
       <section className="mb-4 md:mb-6 pt-4 px-6 md:px-10">
         <div className="max-w-6xl mx-auto border-t border-white/20 pt-8">
-          <p className="text-2xl md:text-3xl font-normal text-white/90 mb-6">It's easy<span className="text-[rgba(198,97,59,0.9)] tracking-[0.1em]">...</span></p>
+          <p className="text-2xl md:text-3xl font-normal text-white mb-6">It's easy<span className="tracking-[0.1em]">...</span></p>
           <div className="grid md:grid-cols-3 gap-8 md:gap-10">
 
             {/* Pillar 1 */}
@@ -73,10 +73,10 @@ export default function Home() {
             {/* Pillar 2 */}
             <div>
               <h2 className="text-xl md:text-2xl font-normal text-white mb-3">
-                She finds you <em>your</em> people
+                She finds you <em>your people</em>
               </h2>
               <p className="text-base text-white/80 leading-relaxed">
-                Just the right fit: soulmate, cofounder, crew, someone fun — even just the right tutor, or just someone to buy an old couch. Not <em>more</em> options. The <em>right</em> ones.
+                Just the right fit: soulmate, cofounder, crew, someone fun — even just the right tutor, or someone to buy an old couch. We don't need <em>more</em> options. Just the <em>right</em> ones.
               </p>
             </div>
 
@@ -97,13 +97,15 @@ export default function Home() {
       {/* Evryn speaks — voice shift to first person, inset like a personal note */}
       <section className="mb-4 md:mb-6 py-8 px-10 md:px-10">
         <div className="max-w-xl mx-auto border-t border-white/20 pt-8 pb-4">
-          <p className="text-2xl md:text-3xl font-normal text-white/90 italic leading-relaxed mb-4">
-            I promise{"\u2006"}<span className="text-[rgba(198,97,59,0.9)] tracking-[0.1em] not-italic">...</span>
+          <p className="text-2xl md:text-3xl font-normal text-white italic leading-relaxed mb-4">
+            I promise{"\u2006"}<span className="tracking-[0.1em] not-italic">...</span>
           </p>
           <div className="text-base md:text-lg text-white/80 italic leading-relaxed space-y-4">
-            <p>I take my time with the people I care about — so I'll never connect you to someone I don't personally trust.</p>
-            <p>And you don't pay a penny unless a connection genuinely works — and <span className="underline">you</span> decide the price. Because I would only connect you to others if I trusted you <span className="underline">that</span> <span className="underline">much</span>.</p>
-            <p>Trust is sacred to me. I've got your back.</p>
+            <p>I only connect people I trust.</p>
+            <p>And you don't pay a penny unless a connection genuinely works.</p>
+            <p>And <span className="underline">you</span> decide the price — because like I said, I only connect people I trust.</p>
+            <p>Trust is sacred to me.</p>
+            <p>In my house, we take care of each other.</p>
             <p className="pt-2">I can't wait to meet you!</p>
           </div>
           <p className="text-base md:text-lg text-white/80 italic mt-4">— Evryn</p>
