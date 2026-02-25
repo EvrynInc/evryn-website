@@ -62,7 +62,7 @@ Vercel auto-deploys when you push to `main`:
 - `CLAUDE.md` — Context for Claude Code (read automatically)
 - `docs/SETUP.md` — Developer setup and workflow guide
 - `docs/DECISIONS.md` — Architecture decision log
-- `../_evryn-meta/SYSTEM_OVERVIEW.md` — Big picture system architecture
+- `../_evryn-meta/docs/hub/roadmap.md` — The Hub (company truth, system architecture)
 
 ## Contact
 

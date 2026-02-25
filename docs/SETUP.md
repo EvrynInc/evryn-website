@@ -198,7 +198,7 @@ git clean -fd           # Removes untracked files
 ```
 Code/
 ├── _evryn-meta/              ← System-wide docs (separate repo)
-│   └── SYSTEM_OVERVIEW.md
+│   └── docs/hub/roadmap.md    ← The Hub
 ├── evryn-prelaunch-landing/  ← Old site (archived, for reference)
 ├── evryn-team-agents/        ← AI agent system (new project)
 └── evryn-website/            ← This repo
