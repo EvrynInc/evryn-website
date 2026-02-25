@@ -208,7 +208,7 @@ Continued buildout planning. Reconsidered n8n vs code-based backend. Established
 ```
 Code/
 ├── _evryn-meta/              ← System-wide docs (its own repo)
-│   └── SYSTEM_OVERVIEW.md
+│   └── SYSTEM_OVERVIEW.md    ← retired 2026-02-24, content in Hub spokes
 ├── evryn-website/
 └── evryn-app/                ← future
 ```
