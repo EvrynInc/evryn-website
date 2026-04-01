@@ -4,8 +4,8 @@ const nextConfig: NextConfig = {
   async rewrites() {
     return [
       {
-        source: "/wireframes",
-        destination: "/wireframes.html",
+        source: "/demo",
+        destination: "/demo.html",
       },
     ];
   },
