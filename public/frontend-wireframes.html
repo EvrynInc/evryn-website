@@ -1,0 +1,1269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Evryn v0.3 — Wireframe Prototype v2 for Fenwick</title>
+<link href="https://fonts.googleapis.com/css2?family=Karla:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Karla', sans-serif;
+    font-weight: 300;
+    color: white;
+    background: linear-gradient(to bottom, #6DBAC4, #5AABB8);
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* --- Top Navigation (screen switcher) --- */
+  .nav-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: rgba(90, 171, 184, 0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+    height: 52px;
+    gap: 4px;
+    overflow-x: auto;
+  }
+  .nav-bar button {
+    font-family: 'Karla', sans-serif;
+    font-weight: 400;
+    font-size: 11px;
+    color: rgba(255,255,255,0.6);
+    background: none;
+    border: 1px solid transparent;
+    padding: 6px 10px;
+    border-radius: 999px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s;
+  }
+  .nav-bar button:hover { color: white; background: rgba(255,255,255,0.1); }
+  .nav-bar button.active {
+    color: white;
+    background: rgba(255,255,255,0.15);
+    border-color: rgba(255,255,255,0.25);
+  }
+
+  /* --- Screen container --- */
+  .screen { display: none; padding: 72px 20px 40px; max-width: 480px; margin: 0 auto; min-height: 100vh; }
+  .screen.active { display: block; }
+
+  /* --- Phone frame --- */
+  .phone {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 24px;
+    padding: 24px 20px;
+    min-height: 600px;
+    position: relative;
+    backdrop-filter: blur(4px);
+  }
+
+  /* --- App header inside phone --- */
+  .app-header {
+    text-align: center;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+    margin-bottom: 20px;
+  }
+  .app-header h2 {
+    font-weight: 300;
+    font-size: 22px;
+    letter-spacing: 0.12em;
+  }
+  .app-header .subtitle {
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+    margin-top: 4px;
+  }
+
+  /* --- Chat bubbles --- */
+  .chat-area { display: flex; flex-direction: column; gap: 12px; }
+  .bubble {
+    max-width: 85%;
+    padding: 12px 16px;
+    border-radius: 16px;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+  .bubble.evryn {
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.1);
+    align-self: flex-start;
+    border-bottom-left-radius: 4px;
+  }
+  .bubble.user {
+    background: rgba(255,255,255,0.25);
+    align-self: flex-end;
+    border-bottom-right-radius: 4px;
+  }
+  .bubble .sender {
+    font-size: 11px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 4px;
+  }
+
+  /* --- Input bar --- */
+  .input-bar {
+    margin-top: 20px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+  .input-bar input {
+    flex: 1;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 999px;
+    padding: 10px 16px;
+    color: white;
+    font-family: 'Karla', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    outline: none;
+  }
+  .input-bar input::placeholder { color: rgba(255,255,255,0.4); }
+  .input-bar .send-btn {
+    width: 38px; height: 38px;
+    background: rgba(255,255,255,0.2);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 50%;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* --- Buttons --- */
+  .btn {
+    display: inline-block;
+    font-family: 'Karla', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    color: white;
+    background: rgba(255,255,255,0.2);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 999px;
+    padding: 10px 24px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: center;
+  }
+  .btn:hover { background: rgba(255,255,255,0.3); }
+  .btn.full { display: block; width: 100%; }
+  .btn.primary { background: rgba(255,255,255,0.25); border-color: rgba(255,255,255,0.4); }
+  .btn.muted { background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.15); color: rgba(255,255,255,0.6); font-size: 13px; }
+  .btn.disabled { opacity: 0.35; cursor: not-allowed; pointer-events: none; }
+
+  /* --- Legal annotations (below phone frame) --- */
+  .legal-note {
+    background: rgba(255, 107, 107, 0.12);
+    border: 1px solid rgba(255, 107, 107, 0.25);
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin: 12px 0;
+    font-size: 12px;
+    line-height: 1.5;
+    color: rgba(255,255,255,0.85);
+  }
+  .legal-note .tag {
+    display: inline-block;
+    background: rgba(255, 107, 107, 0.3);
+    border-radius: 4px;
+    padding: 1px 6px;
+    font-size: 10px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 4px;
+  }
+
+  /* --- Section labels --- */
+  .screen-label {
+    font-size: 11px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 12px;
+  }
+  .screen-title {
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 4px;
+  }
+  .screen-desc {
+    font-size: 13px;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 20px;
+    line-height: 1.5;
+  }
+
+  /* --- Misc utilities --- */
+  .divider { border-top: 1px solid rgba(255,255,255,0.1); margin: 16px 0; }
+  .spacer { height: 16px; }
+  .text-muted { color: rgba(255,255,255,0.5); }
+  .text-sm { font-size: 13px; }
+  .text-xs { font-size: 11px; }
+  .text-center { text-align: center; }
+  .mt-8 { margin-top: 8px; }
+  .mt-12 { margin-top: 12px; }
+  .mt-16 { margin-top: 16px; }
+  .mt-20 { margin-top: 20px; }
+  .mb-8 { margin-bottom: 8px; }
+  .mb-12 { margin-bottom: 12px; }
+  .gap-8 { gap: 8px; }
+  .flex-col { display: flex; flex-direction: column; }
+
+  /* --- Card --- */
+  .card {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 16px;
+    padding: 16px;
+  }
+
+  /* --- Checkbox / consent --- */
+  .consent-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 0;
+  }
+  .consent-row .checkbox {
+    width: 20px; height: 20px; min-width: 20px;
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 4px;
+    background: rgba(255,255,255,0.08);
+    margin-top: 1px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px;
+    cursor: pointer;
+  }
+  .consent-row .checkbox.checked { background: rgba(255,255,255,0.25); }
+  .consent-row label { font-size: 13px; line-height: 1.5; cursor: pointer; }
+  .consent-row a { color: white; text-decoration: underline; }
+
+  /* --- Account page items --- */
+  .account-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    font-size: 14px;
+  }
+  .account-item .label { color: rgba(255,255,255,0.7); }
+  .account-item .value { font-weight: 400; }
+  .account-item .arrow { color: rgba(255,255,255,0.3); }
+
+  /* --- Payment --- */
+  .payment-modal {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 16px 16px 0 0;
+    padding: 24px 20px;
+    margin-top: 20px;
+  }
+  .payment-input {
+    text-align: center;
+    padding: 16px 0;
+  }
+  .payment-input .dollar {
+    font-size: 42px;
+    font-weight: 400;
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 2px;
+  }
+  .payment-input .dollar span { font-size: 22px; color: rgba(255,255,255,0.5); }
+
+  /* --- Bottom nav --- */
+  .bottom-nav {
+    display: flex;
+    justify-content: space-around;
+    padding: 12px 0 4px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    margin-top: 20px;
+  }
+  .bottom-nav .tab {
+    text-align: center;
+    font-size: 10px;
+    color: rgba(255,255,255,0.4);
+    cursor: pointer;
+  }
+  .bottom-nav .tab.active { color: white; }
+  .bottom-nav .tab .icon { font-size: 20px; margin-bottom: 2px; }
+
+  /* --- OAuth buttons --- */
+  .oauth-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    font-family: 'Karla', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    color: white;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 10px;
+    padding: 12px 16px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .oauth-btn:hover { background: rgba(255,255,255,0.18); }
+  .oauth-btn .icon { font-size: 18px; }
+
+  /* --- Connection list item --- */
+  .connection-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .connection-item:hover { background: rgba(255,255,255,0.1); }
+  .connection-item .avatar {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    min-width: 40px;
+    background: rgba(255,255,255,0.15);
+  }
+  .connection-item .info { flex: 1; }
+  .connection-item .name { font-weight: 400; font-size: 14px; }
+  .connection-item .preview { font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 2px; }
+  .connection-item .time { font-size: 11px; color: rgba(255,255,255,0.35); }
+
+  /* --- Stage badge --- */
+  .stage-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 6px;
+    padding: 2px 8px;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 12px;
+  }
+</style>
+</head>
+<body>
+
+<!-- Top Navigation -->
+<div class="nav-bar">
+  <button class="active" onclick="showScreen('landing')">1. Landing</button>
+  <button onclick="showScreen('preaccount')">2. Pre-Account</button>
+  <button onclick="showScreen('nudge')">3. Nudge</button>
+  <button onclick="showScreen('create')">4. Create Account</button>
+  <button onclick="showScreen('onboarding')">5. Onboarding</button>
+  <button onclick="showScreen('anticipation')">6. Anticipation</button>
+  <button onclick="showScreen('match')">7. Connection Dance</button>
+  <button onclick="showScreen('verify')">8. Verify ID</button>
+  <button onclick="showScreen('payment')">9. Payment</button>
+  <button onclick="showScreen('connection')">10. Connection</button>
+  <button onclick="showScreen('aftercare')">11. Aftercare</button>
+  <button onclick="showScreen('account')">12. Account</button>
+</div>
+
+<!-- ============================================ -->
+<!-- SCREEN 1: Landing at evryn.ai -->
+<!-- ============================================ -->
+<div id="landing" class="screen active">
+  <div class="screen-label">Stage 1 &mdash; Screen 1 of 12</div>
+  <div class="screen-title">Landing at evryn.ai</div>
+  <div class="screen-desc">User arrives from gatekeeper outreach email, Mark's auto-responder, or organic visit. They see Evryn's marketing site with a consent-gated "Talk to Evryn" button.</div>
+
+  <div class="phone">
+    <div style="text-align: center; padding: 12px 0 0;">
+      <div style="font-size: 28px; font-weight: 300; letter-spacing: 0.12em;">evryn</div>
+    </div>
+
+    <div style="text-align: center; padding: 24px 0 8px;">
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" style="width: 120px; height: 120px; margin-bottom: 16px;">
+        <defs><filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="2" result="coloredBlur"/><feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+        <g fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="1.2" filter="url(#glow)">
+          <circle cx="100" cy="100" r="33"/><circle cx="100" cy="67" r="33"/><circle cx="128.6" cy="83.5" r="33"/><circle cx="128.6" cy="116.5" r="33"/><circle cx="100" cy="133" r="33"/><circle cx="71.4" cy="116.5" r="33"/><circle cx="71.4" cy="83.5" r="33"/>
+        </g>
+      </svg>
+      <p style="font-size: 16px; line-height: 1.8; color: rgba(255,255,255,0.9);">
+        Imagine if every time you needed someone<br>
+        for <em>anything</em><br>
+        you had a trusted friend<br>
+        who really knew you<br>
+        and she'd just...<br>
+        find you the right person.
+      </p>
+      <p style="font-size: 16px; margin-top: 16px; font-weight: 400;">
+        That's what Evryn does.
+      </p>
+      <p style="font-size: 16px; font-weight: 400;">
+        She finds you <em>your people</em>.
+      </p>
+    </div>
+
+    <div style="padding: 24px 0 0;">
+      <div class="consent-row" style="justify-content: center;">
+        <div class="checkbox" onclick="toggleLandingConsent(this)" id="landing-consent">&nbsp;</div>
+        <label style="font-size: 12px;">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
+      </div>
+
+      <button class="btn full primary mt-8 disabled" id="talk-btn" onclick="showScreen('preaccount')">Talk to Evryn</button>
+      <button class="btn full muted mt-12" onclick="showScreen('create')">Already have an account? Sign in</button>
+    </div>
+  </div>
+
+  <!-- Legal annotations BELOW phone frame -->
+  <div class="legal-note" style="margin-top: 20px;">
+    <div class="tag">Consent &mdash; Clickwrap (ToS + PP)</div>
+    <div>Checkbox must be checked to unlock the "Talk to Evryn" button. Every person who has ever chatted with Evryn has affirmatively agreed to ToS/PP. Consent logged: timestamp, document versions agreed to, session ID.</div>
+  </div>
+  <div class="legal-note">
+    <div class="tag">Entry Paths</div>
+    <div>Users arrive via: (a) reply link in gatekeeper outreach email, (b) gatekeeper's auto-responder or contact page directing to evryn.ai, (c) Phase I backlog reply, (d) organic visit. All paths converge here. Outreach is structured as a reply on the gatekeeper's behalf — see meeting prep Q2 and <a href="#" style="color: rgba(255,255,255,0.85);">Gatekeeper Flow doc</a>.</div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- SCREEN 2: Pre-Account Conversation -->
+<!-- ============================================ -->
+<div id="preaccount" class="screen">
+  <div class="screen-label">Stage 2 &mdash; Screen 2 of 12</div>
+  <div class="screen-title">Pre-Account Conversation</div>
+  <div class="screen-desc">Ephemeral, tab-scoped session. No cookies, no persistence. Conversation dies when the tab closes.</div>
+
+  <div class="phone">
+    <div class="app-header">
+      <h2>evryn</h2>
+    </div>
+
+    <div class="text-xs text-muted mb-8" style="font-style: italic;">Pre-loaded greeting (static UI element, not API-sent):</div>
+    <div class="chat-area">
+      <div class="bubble evryn">
+        Hi, I'm Evryn, it's good to meet you. How can I help you?
+      </div>
+
+      <div class="bubble user">
+        Hi, I'm Jamie. I'm a documentary filmmaker in Seattle. Mark Titus sent me your way — I reached out to him because he's one of the few producers actually getting indie docs into theaters.
+      </div>
+
+      <div class="bubble evryn">
+        Awesome — tell me about your work. What kind of stories are you drawn to?
+      </div>
+
+      <div class="bubble user">
+        Stories about communities that exist under the surface of cities. I just finished a piece on urban foraging networks in the Pacific Northwest.
+      </div>
+
+      <div class="bubble evryn">
+        I love that — the hidden layer, the people and systems most people walk right past. That tells me a lot about how you see the world.
+      </div>
+
+      <div class="bubble evryn">
+        And wait a minute — do you mean <em>Under the Canopy</em>? Are you Jamie Chen?
+      </div>
+
+      <div class="bubble user">
+        Ha — yeah, that's me! How do you know about that?
+      </div>
+
+      <div class="bubble evryn">
+        I saw NWFF's piece on you! It's really nice to meet you, Jamie.
+      </div>
+    </div>
+
+    <div class="input-bar">
+      <input placeholder="Talk to Evryn..." id="preaccount-input" oninput="toggleSendBtn(this)" onkeydown="if(event.key==='Enter'&&this.value.trim())showScreen('nudge')">
+      <div class="send-btn" id="preaccount-send" style="opacity: 0.4; pointer-events: none;" onclick="showScreen('nudge')">&#8593;</div>
+    </div>
+  </div>
+
+  <div class="legal-note" style="margin-top: 20px;">
+    <div class="tag">Ephemeral Session</div>
+    <div>No cookie-based session persistence. Every new page load = fresh conversation. Session lives in a server-side session store, keyed to a token in the tab's JavaScript runtime — dies when the tab closes. If user closes the tab and returns, Evryn doesn't remember them. This is a deliberate safety choice: prevents Person A's data from leaking to Person B on a shared device. User already consented to ToS/PP at the landing page (Screen 1).</div>
+  </div>
+  <div class="legal-note">
+    <div class="tag">Data Processing</div>
+    <div>All conversation data processed through Anthropic Claude API. If user never creates an account, conversation content is discarded. IP/behavioral data may be retained separately for security (DDoS, repeated attacks) — security infrastructure, not user data. Whether any conversation content retention is needed for the security window is an open question.</div>
+  </div>
+  <div class="legal-note">
+    <div class="tag">User Isolation</div>
+    <div>User isolation is absolute. Evryn never reveals one user's information to another — including whether she knows someone, has spoken with them, or has any relationship with them. Even if a user mentions another person by name, Evryn treats each conversation as fully independent. Evryn does not confirm or deny relationships with other users.</div>
+  </div>
+  <div class="legal-note">
+    <div class="tag">User Recognition</div>
+    <div>Evryn may recognize a user from publicly available information only. Here, she references NWFF's coverage of Jamie's film — public info. Evryn will only volunteer recognition when the match is unambiguous (specific name + specific work, clearly public). If there's any uncertainty, she doesn't volunteer — she lets the user tell her who they are.</div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- SCREEN 3: Account Creation Nudge -->
+<!-- ============================================ -->
+<div id="nudge" class="screen">
+  <div class="screen-label">Stage 2 (continued) &mdash; Screen 3 of 12</div>
+  <div class="screen-title">Account Creation Nudge</div>
+  <div class="screen-desc">Evryn nudges toward account creation as the conversation deepens. Inline buttons — not modals.</div>
+
+  <div class="phone">
+    <div class="app-header">
+      <h2>evryn</h2>
+    </div>
+
+    <div class="text-xs text-muted mb-8" style="font-style: italic;">~20 exchanges — gentle suggestion:</div>
+    <div class="chat-area">
+      <div class="bubble evryn">
+        I'm really enjoying getting to know you. I should mention — I won't be able to remember this conversation unless you create a login. It's free and only takes a moment.
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 8px; max-width: 85%;">
+        <button class="btn primary full" onclick="showScreen('create')">Create Free Account</button>
+        <button class="btn muted full">I'm not quite ready yet</button>
+      </div>
+
+      <div class="text-xs text-muted mt-12 mb-8" style="font-style: italic;">If user declines, conversation continues. ~30 exchanges:</div>
+
+      <div class="bubble evryn">
+        Just want to give you a heads up — we only have a few more exchanges before the system is going to require a login.
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 8px; max-width: 85%;">
+        <button class="btn primary full" onclick="showScreen('create')">Create Free Account</button>
+        <button class="btn muted full">Still not quite ready</button>
+      </div>
+
+      <div class="text-xs text-muted mt-12 mb-8" style="font-style: italic;">40 exchanges — account creation screen appears automatically over the chat.</div>
+    </div>
+  </div>
+
+  <div class="legal-note" style="margin-top: 20px;">
+    <div class="tag">Nudge Cadence</div>
+    <div>~20 and ~30 are soft targets — Evryn reads the moment and picks an appropriate beat. At both, inline buttons appear below Evryn's message: "Create Free Account" and a decline option. 40 is a hard system gate: the account creation screen appears automatically over the chat (see next screen).</div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- SCREEN 4: Account Creation -->
+<!-- ============================================ -->
+<div id="create" class="screen">
+  <div class="screen-label">Stage 3 &mdash; Screen 4 of 12</div>
+  <div class="screen-title">Account Creation</div>
+  <div class="screen-desc">OAuth-first design: Google and Apple sign-in prominent, always tappable. Email/password as fallback with inline checkbox. Conversation migrates to profile on creation.<br><br>This screen has two states — tap an OAuth button to swap to an inline consent confirmation (State B) before redirect. "Go back" returns to State A.</div>
+
+  <!-- ---- State A: Default (choosing auth method) ---- -->
+  <div class="phone" id="create-state-a" style="min-height: auto;">
+    <div class="app-header">
+      <h2>evryn</h2>
+      <div class="subtitle">create your account</div>
+    </div>
+
+    <div class="flex-col" style="gap: 12px;">
+      <button class="oauth-btn" onclick="showCreateOAuthConfirm('google')">
+        <span class="icon">G</span>
+        Continue with Google
+      </button>
+      <button class="oauth-btn" onclick="showCreateOAuthConfirm('apple')">
+        <span class="icon"><svg viewBox="0 0 17 20" width="16" height="18" fill="white" style="vertical-align: middle;"><path d="M13.545 10.239c-.022-2.234 1.823-3.308 1.906-3.359-.037-.054-1.494-1.422-1.494-1.422S12.41 3.885 11.22 3.885c-1.09 0-2.16.652-2.735.652-.607 0-1.506-.636-2.485-.618C4.57 3.937 3.26 4.69 2.53 5.913 1.03 8.4 2.157 12.104 3.596 14.12c.723 1.04 1.58 2.2 2.707 2.159 1.094-.044 1.504-.7 2.826-.7 1.295 0 1.672.7 2.81.676 1.174-.02 1.913-1.052 2.624-2.098.838-1.2 1.176-2.372 1.193-2.433-.026-.01-2.283-.873-2.31-3.485zm-2.168-6.4c.578-.728.977-1.72.868-2.724-.84.036-1.89.582-2.492 1.29-.531.627-.999 1.648-.876 2.617.94.072 1.907-.48 2.5-1.183z"/></svg></span>
+        Continue with Apple
+      </button>
+
+      <div style="display: flex; align-items: center; gap: 12px; padding: 8px 0;">
+        <div style="flex: 1; border-top: 1px solid rgba(255,255,255,0.15);"></div>
+        <div class="text-xs text-muted">or</div>
+        <div style="flex: 1; border-top: 1px solid rgba(255,255,255,0.15);"></div>
+      </div>
+
+      <div>
+        <div class="text-xs text-muted mb-8">Email</div>
+        <input style="width: 100%; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; padding: 10px 14px; color: white; font-family: Karla; font-size: 14px;" placeholder="you@email.com">
+      </div>
+      <div>
+        <div class="text-xs text-muted mb-8">Password</div>
+        <input type="password" style="width: 100%; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; padding: 10px 14px; color: white; font-family: Karla; font-size: 14px;" placeholder="Create a password">
+      </div>
+
+      <div class="consent-row">
+        <div class="checkbox" onclick="toggleCreateConsent(this)" id="create-consent">&nbsp;</div>
+        <label>I agree to Evryn's <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
+      </div>
+
+      <button class="btn full primary mt-8 disabled" id="create-btn" onclick="showScreen('onboarding')">Create account</button>
+    </div>
+  </div>
+
+  <!-- ---- State B: OAuth consent confirmation ---- -->
+  <div class="phone" id="create-state-b" style="display: none; min-height: auto;">
+    <div class="app-header">
+      <h2>evryn</h2>
+      <div class="subtitle">create your account</div>
+    </div>
+
+    <div class="flex-col" style="gap: 16px;">
+      <div class="card" style="padding: 24px 20px;">
+        <div id="oauth-provider-icon" style="font-size: 28px; margin-bottom: 16px; text-align: center;">G</div>
+        <div class="consent-row" style="margin-bottom: 20px;">
+          <div class="checkbox" onclick="toggleOAuthConsent(this)" id="oauth-consent">&nbsp;</div>
+          <label>I agree to Evryn's <a href="#" style="color: white; text-decoration: underline;">Terms of Service</a> and <a href="#" style="color: white; text-decoration: underline;">Privacy Policy</a></label>
+        </div>
+        <button class="btn primary full disabled" id="oauth-confirm-btn" onclick="showScreen('onboarding')">Continue to Google</button>
+        <div style="margin-top: 12px; text-align: center;">
+          <a href="#" onclick="hideCreateOAuthConfirm(); return false;" style="color: rgba(255,255,255,0.5); font-size: 13px; text-decoration: none;">Go back</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="legal-note" style="margin-top: 20px;">
+    <div class="tag">Consent &mdash; Second Gate (Belt-and-Suspenders)</div>
+    <div>Second consent event at account creation, with path-appropriate UX. OAuth: tapping Google/Apple shows inline consent confirmation — user agrees before redirect. Email: checkbox gates the Create account button. Both paths produce a logged consent event. No account can be created through any method without affirmative consent. Even if someone bypassed the pre-chat checkbox (e.g., direct link to chat), every account holder has agreed to terms with 100% certainty. Consent logged: timestamp, auth method (Google/Apple/email), document versions, user ID.</div>
+  </div>
+  <div class="legal-note">
+    <div class="tag">Conversation Migration</div>
+    <div>If account is created within the same session, the entire pre-account conversation migrates into the new user profile. Understanding Evryn built during ephemeral session becomes the foundation of the permanent profile. User picks up right where they left off — account creation is a brief interruption, not a restart.</div>
+  </div>
+  <div class="legal-note">
+    <div class="tag">Data Collection</div>
+    <div>Auth credentials collected (email or OAuth token). Stored via Supabase Auth (hosted PostgreSQL, encryption at rest and in transit).</div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- SCREEN 5: Onboarding (Continuing the Conversation) -->
+<!-- ============================================ -->
+<div id="onboarding" class="screen">
+  <div class="screen-label">Stage 4 &mdash; Screen 5 of 12</div>
+  <div class="screen-title">Onboarding (Continuing the Conversation)</div>
+  <div class="screen-desc">Account creation doesn't change the conversation's character. What changes: it now persists. Bottom nav appears. Evryn's "More About Me" trust arc begins during the pre-account conversation and continues after account creation — what's shown here is a representative sample of how she explains herself conversationally.</div>
+
+  <div class="phone">
+    <div class="app-header">
+      <h2>evryn</h2>
+    </div>
+
+    <div class="chat-area">
+      <div class="bubble evryn">
+
+        Perfect — all set. Now I won't lose any of this.
+      </div>
+
+      <div class="bubble evryn">
+
+        Hey, before we get too much further — can I tell you a little about how I work?
+      </div>
+
+      <div class="bubble user">
+        Sure, go ahead.
+      </div>
+
+      <div class="bubble evryn">
+
+        The way I do things is really different. You don't search, you don't swipe, you don't even have a profile. You just tell me what you're looking for — and I find you what you need. And no one can even see you're here unless you tell me you want to be connected to them.
+      </div>
+
+      <div class="bubble evryn">
+
+        I run this place kind of like my own little shop. Our relationship is personal, and it's based on trust. The more you show me your real self, the better I am at finding just the right people for you. And I only connect people I personally trust — so I've got your back.
+      </div>
+    </div>
+
+    <div class="input-bar">
+      <input placeholder="Talk to Evryn..." oninput="toggleSendBtn(this)">
+      <div class="send-btn" style="opacity: 0.4; pointer-events: none;">&#8593;</div>
+    </div>
+
+    <div class="bottom-nav">
+      <div class="tab active"><div class="icon">&#9673;</div>Evryn</div>
+      <div class="tab" style="opacity: 0.3;"><div class="icon">&#9826;</div>Connections</div>
+      <div class="tab" onclick="showScreen('account')"><div class="icon">&#9679;</div>Account</div>
+    </div>
+  </div>
+
+  <div class="legal-note" style="margin-top: 20px;">
+    <div class="tag">Data Collection &mdash; Conversational</div>
+    <div>There are no forms. Evryn extracts structured personal data (location, profession, interests, personality) from natural conversation and builds a profile over time.</div>
+  </div>
+  <div class="legal-note">
+    <div class="tag">"More About Me" Trust Arc</div>
+    <div>Evryn explains herself conversationally over multiple sessions — covering her trust-based model, privacy practices, pricing, how connections work, identity verification, and the satisfaction guarantee. Not a disclosure screen. If topics aren't covered in a given session, Evryn tracks what's outstanding and weaves it into future conversations.</div>
+  </div>
+  <div class="legal-note">
+    <div class="tag">Third Party &mdash; Anthropic</div>
+    <div>All user messages processed by Anthropic Claude API. Planning to implement Anthropic Zero Data Retention (ZDR) agreement and PII anonymization layer in hardening sprint between v0.3 and v0.4.</div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- SCREEN 6: Anticipation Mode -->
+<!-- ============================================ -->
+<div id="anticipation" class="screen">
+  <div class="screen-label">Stage 5 &mdash; Screen 6 of 12</div>
+  <div class="screen-title">Anticipation Mode</div>
+  <div class="screen-desc">Between onboarding and matches. Evryn checks in, learns more, refines understanding, keeps users appropriately hopeful. This is where trust deepens — not a passive waiting room.</div>
+
+  <div class="phone">
+    <div class="app-header">
+      <h2>evryn</h2>
+    </div>
+
+    <div class="chat-area">
+      <div class="bubble evryn">
+
+        I've been thinking about something you said — that you want a creative ally, not just a business hire. That feels like it comes from somewhere specific. Can you tell me more about that?
+      </div>
+
+      <div class="bubble user">
+        Yeah — I had a producer on my first short who...
+      </div>
+
+      <div class="text-xs text-muted mt-12 mb-8" style="font-style: italic;">3 days later:</div>
+
+      <div class="bubble evryn">
+
+        Quick thought. You told me a lot about the kind of work you want to make, but you haven't told me much about how you like to <em>work</em>. That matters too. When you have a minute, I'd love to hear about that.
+      </div>
+
+      <div class="text-xs text-muted mt-12 mb-8" style="font-style: italic;">1 week later:</div>
+
+      <div class="bubble evryn">
+
+        Still looking. I've seen a few people who are close, but I know how important this is to you, so I'll let you know when I find just the right person.
+      </div>
+    </div>
+
+    <div class="input-bar">
+      <input placeholder="Talk to Evryn..." oninput="toggleSendBtn(this)">
+      <div class="send-btn" style="opacity: 0.4; pointer-events: none;">&#8593;</div>
+    </div>
+
+    <div class="bottom-nav">
+      <div class="tab active"><div class="icon">&#9673;</div>Evryn</div>
+      <div class="tab" style="opacity: 0.3;"><div class="icon">&#9826;</div>Connections</div>
+      <div class="tab" onclick="showScreen('account')"><div class="icon">&#9679;</div>Account</div>
+    </div>
+  </div>
+
+  <div class="legal-note" style="margin-top: 20px;">
+    <div class="tag">Proactive Outreach</div>
+    <div>Evryn initiates contact with context-aware timing. In v0.3, proactive messages are delivered via email when the user isn't in the app, linking back to the conversation. Messages appear in the in-app chat history regardless of delivery channel. Opt-out: conversational (user tells Evryn to stop or adjust frequency) + CAN-SPAM-compliant unsubscribe link in every outbound email. No communication preferences settings page in v0.3.</div>
+  </div>
+  <div class="legal-note">
+    <div class="tag">Background Processing</div>
+    <div>Profile continuously refined through both active conversation and passive analysis. Evryn's reflection module periodically re-examines user stories and updates understanding.</div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- SCREEN 7: The Connection Dance -->
+<!-- ============================================ -->
+<div id="match" class="screen">
+  <div class="screen-label">Stage 6 (Steps 1-3) &mdash; Screen 7 of 12</div>
+  <div class="screen-title">The Connection Dance</div>
+  <div class="screen-desc">Evryn has already explained how connections work during the trust arc. She can't share anything about the other person until they've approved it — so she starts by asking Jamie to approve what she'd share about him. The same process happens independently on the other side. One round shown here; some connections need several.<br><br>This screen has two states — tap "Review what I'd like to share" to swap to a pop-over modal (State B) showing the teaser text for approval. "No, let's keep working on this" returns to State A.</div>
+
+  <!-- State A: Chat with review button -->
+  <div class="phone" id="dance-state-a" style="min-height: auto;">
+    <div class="app-header">
+      <h2>evryn</h2>
+    </div>
+
+    <div class="chat-area">
+      <div class="bubble evryn">
+
+        Hey — I found someone I think you'll really like.
+      </div>
+
+      <div class="bubble evryn">
+
+        Like I mentioned before, I'll share a little about each of you with the other — just a teaser — and if it sounds like it might be a good fit, we can share a little more info, or we can just go straight to a connection — it's up to you.
+      </div>
+
+      <div class="bubble evryn">
+
+        Want to see what I'd like to share about you?
+      </div>
+
+      <div class="bubble user">
+        Sure!
+      </div>
+    </div>
+
+    <div style="margin-top: 16px;">
+      <button class="btn primary full" onclick="showDanceModal()">Review what I'd like to share</button>
+    </div>
+
+    <div class="bottom-nav">
+      <div class="tab active"><div class="icon">&#9673;</div>Evryn</div>
+      <div class="tab" style="opacity: 0.3;"><div class="icon">&#9826;</div>Connections</div>
+      <div class="tab" onclick="showScreen('account')"><div class="icon">&#9679;</div>Account</div>
+    </div>
+  </div>
+
+  <!-- State B: Consent modal -->
+  <div class="phone" id="dance-state-b" style="display: none; min-height: auto;">
+    <div class="app-header">
+      <h2>evryn</h2>
+    </div>
+
+    <div class="flex-col" style="gap: 16px; justify-content: center; min-height: 320px;">
+      <div class="card" style="padding: 24px 20px;">
+        <div class="text-xs text-muted mb-12" style="font-style: italic;">Here's what I'd like to share about you:</div>
+        <p class="text-sm" style="line-height: 1.7; color: rgba(255,255,255,0.8); margin-bottom: 20px;">
+          "A documentary filmmaker in Seattle who tells stories about hidden communities and systems — the kind of work that makes audiences want to get involved, not just watch. Recently screened at a major Pacific Northwest festival. Looking for a producing partner who's a real creative ally, not just a business hire — someone who gets independent distribution because they've built those relationships themselves."
+        </p>
+        <button class="btn primary full" onclick="showScreen('verify')">Yes, send this now</button>
+        <button class="btn muted full" style="margin-top: 8px;" onclick="hideDanceModal()">No, let's keep working on this</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="legal-note" style="margin-top: 20px;">
+    <div class="tag">Consent &mdash; Progressive</div>
+    <div>Neither party learns the other exists unless both opt in. Some connections need one round; others need several with progressively more detail (e.g., first name, photos in dating contexts). Evryn reads the context and adjusts. Each round is a separate consent event — user reviews exactly what Evryn would share about them and approves before anything is sent. Users can withdraw at any point — match becomes a non-event. Full name and contact info are not shared before payment. Consent logged: timestamp, user ID, description version, what information was included.</div>
+  </div>
+  <div class="legal-note">
+    <div class="tag">Matching &mdash; AI Decision</div>
+    <div>Match determined by structured filters (geography, profession, constraints) and profile similarity analysis, with final evaluation by Evryn. Match descriptions written by Evryn — her voice, her assessment, her framing.</div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- SCREEN 9: Identity Verification -->
+<!-- ============================================ -->
+<div id="verify" class="screen">
+  <div class="screen-label">Stage 6 (Step 4) &mdash; Screen 8 of 12</div>
+  <div class="screen-title">Identity Verification</div>
+  <div class="screen-desc">Before a connection proceeds to payment, both users must be verified. This is part of the Connection Dance — not a separate gate. Once verified, always verified. Evryn set expectations during the trust arc, so this isn't a surprise.</div>
+
+  <div class="phone">
+    <div class="app-header">
+      <h2>evryn</h2>
+    </div>
+
+    <div class="chat-area">
+      <div class="bubble evryn">
+
+        She said yes!
+      </div>
+
+      <div class="bubble evryn">
+
+        Before I connect you two, there's one more step — I need to verify that you're both real people. It's how I keep everyone safe.
+      </div>
+
+      <div class="bubble evryn">
+
+        Verification should only take a few minutes.
+      </div>
+    </div>
+
+    <div class="spacer"></div>
+
+    <div class="card" style="text-align: center;">
+      <div style="font-size: 28px; margin-bottom: 12px;">&#128274;</div>
+      <div class="text-sm mb-12" style="font-weight: 400;">Verify your identity</div>
+      <div class="text-xs text-muted mb-12" style="line-height: 1.5;">
+        You'll be taken to our verification partner.<br>
+        Evryn never stores your ID documents, photos, or biometric data.
+      </div>
+      <button class="btn primary" onclick="showScreen('payment')">Begin verification</button>
+    </div>
+
+    <div class="bottom-nav">
+      <div class="tab active"><div class="icon">&#9673;</div>Evryn</div>
+      <div class="tab" style="opacity: 0.3;"><div class="icon">&#9826;</div>Connections</div>
+      <div class="tab" onclick="showScreen('account')"><div class="icon">&#9679;</div>Account</div>
+    </div>
+  </div>
+
+  <div class="legal-note" style="margin-top: 20px;">
+    <div class="tag">Consent &mdash; Identity Verification</div>
+    <div>Separate consent event, distinct from ToS/PP consent. Consent logged: timestamp, user ID, verification provider.</div>
+  </div>
+  <div class="legal-note">
+    <div class="tag">Third Party &mdash; iDenfy</div>
+    <div>Identity verification handled by iDenfy (document + selfie match). Evryn stores ONLY: verified/not-verified flag, verification timestamp, and a non-reversible trust fingerprint hash. No ID documents, selfie images, or document numbers stored by Evryn. iDenfy's own data retention policy governs document storage on their end.</div>
+  </div>
+  <div class="legal-note">
+    <div class="tag">Trust Fingerprint Hash</div>
+    <div>On successful verification, a deterministic non-reversible hash is generated from the verification result data (not the raw documents, which are never stored by Evryn). The same person re-verifying will produce the same hash. Persists after account deletion — prevents bad actors from deleting and re-creating accounts to reset trust history.</div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- SCREEN 10: Trust-Based Payment -->
+<!-- ============================================ -->
+<div id="payment" class="screen">
+  <div class="screen-label">Stage 7 &mdash; Screen 9 of 12</div>
+  <div class="screen-title">Trust-Based Payment</div>
+  <div class="screen-desc">Both sides decide what the connection is worth. Minimal modal slides up from bottom — chat still visible above. 100% satisfaction guarantee.</div>
+
+  <div class="phone">
+    <div class="app-header">
+      <h2>evryn</h2>
+    </div>
+
+    <div class="chat-area">
+      <div class="bubble evryn">
+
+        You're verified — thank you. She is too. Let's get you connected.
+      </div>
+      <div class="bubble evryn">
+
+        We discussed trust-based pricing before, so you tell me what you think is fair. And remember, I can also suggest a price if that's easier, but you make the final call.
+      </div>
+    </div>
+
+    <!-- Payment modal slides up from bottom -->
+    <div class="payment-modal">
+      <div class="payment-input">
+        <div class="dollar"><span>$</span><input type="text" id="payment-amount" oninput="togglePayBtn(this)" placeholder="0.00" style="background: none; border: none; color: white; font-family: Karla; font-size: 32px; font-weight: 300; width: 100px; outline: none; --webkit-text-fill-color: white;" inputmode="decimal"></div>
+        <style>#payment-amount::placeholder { color: rgba(255,255,255,0.25); }</style>
+      </div>
+
+      <button class="btn primary full mt-16 disabled" id="pay-btn" onclick="showScreen('connection')">Pay and connect</button>
+      <div class="text-center text-xs text-muted mt-12">30-day 100% satisfaction guarantee</div>
+    </div>
+
+    <div class="bottom-nav">
+      <div class="tab active"><div class="icon">&#9673;</div>Evryn</div>
+      <div class="tab" style="opacity: 0.3;"><div class="icon">&#9826;</div>Connections</div>
+      <div class="tab" onclick="showScreen('account')"><div class="icon">&#9679;</div>Account</div>
+    </div>
+  </div>
+
+  <div class="legal-note" style="margin-top: 20px;">
+    <div class="tag">Third Party &mdash; Stripe</div>
+    <div>Payment processed via Stripe. Simple pay-in-the-moment — no Evryn Wallet, no pre-purchased credits, no installment plans in v0.3. Evryn does not store payment card details — Stripe handles PCI compliance. No sensitive transaction info is passed to the Anthropic API.</div>
+  </div>
+  <div class="legal-note">
+    <div class="tag">Pricing + Refund</div>
+    <div>Trust-based pricing: user sets the amount. 100% satisfaction guarantee — full refund within 30 days, no explanation required (though feedback appreciated). Refund requested via in-app conversation with Evryn or email to support@evryn.ai. Refund processed regardless of whether feedback is given. Payment behavior is a trust signal — Evryn notices how you show up in the exchange.</div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- SCREEN 10: Connection Conversation -->
+<!-- ============================================ -->
+<div id="connection" class="screen">
+  <div class="screen-label">Stage 8 &mdash; Screen 10 of 12</div>
+  <div class="screen-title">Connection Conversation</div>
+  <div class="screen-desc">Two distinct moments: Evryn sets up aftercare in her tab, then Jamie moves to a fully private conversation with Sarah via the Connections tab. Evryn is NOT present in the connection.</div>
+
+  <!-- PHONE 1: Evryn tab — aftercare setup -->
+  <div class="phone" style="min-height: auto;">
+    <div class="app-header">
+      <h2>evryn</h2>
+    </div>
+
+    <div class="chat-area">
+      <div class="bubble evryn">
+
+        One last thing — after you two talk, come back and tell me how it goes, okay? Your feedback helps me get better at this.
+      </div>
+
+      <div class="bubble user">
+        Will do. Wish me luck!
+      </div>
+    </div>
+
+    <div class="input-bar">
+      <input placeholder="Talk to Evryn..." oninput="toggleSendBtn(this)">
+      <div class="send-btn" style="opacity: 0.4; pointer-events: none;">&#8593;</div>
+    </div>
+
+    <div class="bottom-nav">
+      <div class="tab active"><div class="icon">&#9673;</div>Evryn</div>
+      <div class="tab" style="opacity: 0.3;"><div class="icon">&#9826;</div>Connections</div>
+      <div class="tab" onclick="showScreen('account')"><div class="icon">&#9679;</div>Account</div>
+    </div>
+  </div>
+
+  <div class="text-xs text-muted mt-12 mb-12" style="font-style: italic; text-align: center;">Jamie taps the Connections tab:</div>
+
+  <!-- PHONE 2: Connection with Sarah -->
+  <div class="phone">
+    <!-- Connection conversation header -->
+    <div style="display: flex; align-items: center; gap: 12px; padding-bottom: 16px; border-bottom: 1px solid rgba(255,255,255,0.12); margin-bottom: 16px;">
+      <div style="width: 36px; height: 36px; border-radius: 50%; background: rgba(167, 139, 198, 0.4); display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 400;">S</div>
+      <div>
+        <div style="font-weight: 400; font-size: 15px;">Sarah</div>
+        <div class="text-xs text-muted">Connected by Evryn</div>
+      </div>
+    </div>
+
+    <div class="chat-area">
+      <div class="bubble" style="background: rgba(167, 139, 198, 0.2); border: 1px solid rgba(167, 139, 198, 0.15); align-self: flex-start; border-bottom-left-radius: 4px;">
+        <div class="sender">Sarah</div>
+        Hi! Evryn told me about your urban foraging film — that sounds incredible. I've been looking for someone who tells stories about systems people don't see.
+      </div>
+
+      <div class="bubble user">
+        That's exactly my thing. What kind of projects have you produced? Evryn mentioned you have distribution relationships for indie docs?
+      </div>
+
+      <div class="bubble" style="background: rgba(167, 139, 198, 0.2); border: 1px solid rgba(167, 139, 198, 0.15); align-self: flex-start; border-bottom-left-radius: 4px;">
+        <div class="sender">Sarah</div>
+        Yeah — I've placed three features in the last two years, all community-focused. Let me tell you about the last one...
+      </div>
+    </div>
+
+    <div class="input-bar">
+      <input placeholder="Message Sarah..." oninput="toggleSendBtn(this)">
+      <div class="send-btn" style="opacity: 0.4; pointer-events: none;">&#8593;</div>
+    </div>
+
+    <div class="bottom-nav">
+      <div class="tab" onclick="showScreen('aftercare')"><div class="icon">&#9673;</div>Evryn</div>
+      <div class="tab active"><div class="icon">&#9826;</div>Connections</div>
+      <div class="tab" onclick="showScreen('account')"><div class="icon">&#9679;</div>Account</div>
+    </div>
+  </div>
+
+  <div class="legal-note" style="margin-top: 20px;">
+    <div class="tag">Fully Private</div>
+    <div>Evryn is NOT present in connection conversations. She doesn't observe, listen, or moderate in real-time. This conversation is between the two users only. Evryn observation was considered but deferred past v0.3 due to asymmetric consent complexity and surveillance concerns. All messages stored in connection records in Evryn's database.</div>
+  </div>
+  <div class="legal-note">
+    <div class="tag">User-to-User Data</div>
+    <div>Users exchange messages directly via Evryn's platform. Each user controls what they share in conversation. Users can choose when or if to share direct contact info — they can remain safely anonymous, with Evryn having vouched for each. Connection conversations are separate from the Evryn conversation — accessed via the Connections tab.</div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- SCREEN 12: Aftercare -->
+<!-- ============================================ -->
+<div id="aftercare" class="screen">
+  <div class="screen-label">Stage 9 &mdash; Screen 11 of 12</div>
+  <div class="screen-title">Aftercare</div>
+  <div class="screen-desc">User returns to the Evryn tab. She asks how it went. This is both calibration (learning what works) and care (genuine check-in). May follow up again a day or two later.</div>
+
+  <div class="phone">
+    <div class="app-header">
+      <h2>evryn</h2>
+    </div>
+
+    <div class="chat-area">
+      <div class="bubble evryn">
+
+        How did it go with Sarah?
+      </div>
+
+      <div class="bubble user">
+        Really good actually. We're already talking about a project together. She gets what I'm going for.
+      </div>
+
+      <div class="bubble evryn">
+
+        That makes me really happy. That's exactly what I was hoping — someone who gets the way you see stories, not just someone who can "produce." This helps me a lot too — it tells me what a great match looks like for you.
+      </div>
+
+      <div class="bubble evryn">
+
+        I'll check in again in a week or so. And I'm already keeping an eye out for your next connection — the more I learn about what clicks for you, the better I get at finding it.
+      </div>
+    </div>
+
+    <div class="input-bar">
+      <input placeholder="Talk to Evryn..." oninput="toggleSendBtn(this)">
+      <div class="send-btn" style="opacity: 0.4; pointer-events: none;">&#8593;</div>
+    </div>
+
+    <div class="bottom-nav">
+      <div class="tab active"><div class="icon">&#9673;</div>Evryn</div>
+      <div class="tab" onclick="showScreen('connection')"><div class="icon">&#9826;</div>Connections</div>
+      <div class="tab" onclick="showScreen('account')"><div class="icon">&#9679;</div>Account</div>
+    </div>
+  </div>
+
+  <div class="legal-note" style="margin-top: 20px;">
+    <div class="tag">Feedback Data</div>
+    <div>User feedback on connections is collected and used to calibrate matching. Feedback updates both users' profiles (privacy-safe — no cross-user data leakage). Used for individual profile refinement and anonymized cluster/global calibration.</div>
+  </div>
+  <div class="legal-note">
+    <div class="tag">Satisfaction Guarantee</div>
+    <div>If the connection didn't work, the user can request a refund here by simply telling Evryn, or via support@evryn.ai. Evryn asks what didn't feel right — not to gatekeep the refund, but because the feedback helps. Refund processed regardless of whether feedback is given.</div>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- SCREEN 13: Account Page -->
+<!-- ============================================ -->
+<div id="account" class="screen">
+  <div class="screen-label">Persistent &mdash; Screen 12 of 12</div>
+  <div class="screen-title">Account</div>
+  <div class="screen-desc">Accessible throughout the experience via bottom nav. Billing, legal docs, data management. No Evryn Wallet in v0.3.</div>
+
+  <div class="phone">
+    <div class="app-header">
+      <h2>evryn</h2>
+      <div class="subtitle">your account</div>
+    </div>
+
+    <div class="card mb-12">
+      <div style="font-weight: 400; font-size: 15px; margin-bottom: 4px;">Jamie Chen</div>
+      <div class="text-xs text-muted">jamie@email.com &middot; Verified &#10003;</div>
+    </div>
+
+    <div style="font-weight: 400; font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 8px;">PAYMENT</div>
+    <div class="account-item"><span class="label">Payment history</span><span class="arrow">&#8250;</span></div>
+
+    <div style="font-weight: 400; font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 8px; margin-top: 16px;">LEGAL</div>
+    <div class="account-item"><span class="label">Terms of Service</span><span class="arrow">&#8250;</span></div>
+    <div class="account-item"><span class="label">Privacy Policy</span><span class="arrow">&#8250;</span></div>
+
+    <div style="font-weight: 400; font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 8px; margin-top: 16px;">YOUR DATA</div>
+    <div class="account-item"><span class="label">Export my data</span><span class="arrow">&#8250;</span></div>
+    <div class="account-item"><span class="label">Delete my account</span><span class="arrow" style="color: rgba(255, 107, 107, 0.6);">&#8250;</span></div>
+
+    <div class="bottom-nav">
+      <div class="tab" onclick="showScreen('anticipation')"><div class="icon">&#9673;</div>Evryn</div>
+      <div class="tab" onclick="showScreen('connection')"><div class="icon">&#9826;</div>Connections</div>
+      <div class="tab active"><div class="icon">&#9679;</div>Account</div>
+    </div>
+  </div>
+
+  <div class="legal-note" style="margin-top: 20px;">
+    <div class="tag">Data Rights &mdash; GDPR / CCPA</div>
+    <div>Export: user can request full data export (conversations, profile, connections). Delete: personal data purged; trust fingerprint hash retained (disclosed in PP). User's conversation data deleted; anonymized behavioral patterns may be retained. Terms, PP accessible at all times.</div>
+  </div>
+</div>
+
+<script>
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-bar button').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+
+  const screens = ['landing','preaccount','nudge','create','onboarding','anticipation','match','verify','payment','connection','aftercare','account'];
+  const idx = screens.indexOf(id);
+  if (idx >= 0) {
+    document.querySelectorAll('.nav-bar button')[idx].classList.add('active');
+  }
+
+  window.scrollTo(0, 0);
+}
+
+function toggleSendBtn(input) {
+  var sendBtn = input.parentElement.querySelector('.send-btn');
+  if (input.value.trim()) {
+    sendBtn.style.opacity = '1';
+    sendBtn.style.pointerEvents = 'auto';
+  } else {
+    sendBtn.style.opacity = '0.4';
+    sendBtn.style.pointerEvents = 'none';
+  }
+}
+
+function toggleLandingConsent(el) {
+  var btn = document.getElementById('talk-btn');
+  if (el.classList.contains('checked')) {
+    el.innerHTML = '&nbsp;';
+    el.classList.remove('checked');
+    btn.classList.add('disabled');
+  } else {
+    el.innerHTML = '&#10003;';
+    el.classList.add('checked');
+    btn.classList.remove('disabled');
+  }
+}
+
+function toggleCreateConsent(el) {
+  var btn = document.getElementById('create-btn');
+  if (el.classList.contains('checked')) {
+    el.innerHTML = '&nbsp;';
+    el.classList.remove('checked');
+    btn.classList.add('disabled');
+  } else {
+    el.innerHTML = '&#10003;';
+    el.classList.add('checked');
+    btn.classList.remove('disabled');
+  }
+}
+
+function showCreateOAuthConfirm(provider) {
+  document.getElementById('create-state-a').style.display = 'none';
+  document.getElementById('create-state-b').style.display = 'block';
+  var icon = document.getElementById('oauth-provider-icon');
+  var btn = document.getElementById('oauth-confirm-btn');
+  if (provider === 'google') {
+    icon.innerHTML = 'G';
+    btn.innerHTML = 'Continue to Google';
+  } else {
+    icon.innerHTML = '<svg viewBox="0 0 17 20" width="22" height="26" fill="white"><path d="M13.545 10.239c-.022-2.234 1.823-3.308 1.906-3.359-.037-.054-1.494-1.422-1.494-1.422S12.41 3.885 11.22 3.885c-1.09 0-2.16.652-2.735.652-.607 0-1.506-.636-2.485-.618C4.57 3.937 3.26 4.69 2.53 5.913 1.03 8.4 2.157 12.104 3.596 14.12c.723 1.04 1.58 2.2 2.707 2.159 1.094-.044 1.504-.7 2.826-.7 1.295 0 1.672.7 2.81.676 1.174-.02 1.913-1.052 2.624-2.098.838-1.2 1.176-2.372 1.193-2.433-.026-.01-2.283-.873-2.31-3.485zm-2.168-6.4c.578-.728.977-1.72.868-2.724-.84.036-1.89.582-2.492 1.29-.531.627-.999 1.648-.876 2.617.94.072 1.907-.48 2.5-1.183z"/></svg>';
+    btn.innerHTML = 'Continue to Apple';
+  }
+}
+
+function hideCreateOAuthConfirm() {
+  document.getElementById('create-state-b').style.display = 'none';
+  document.getElementById('create-state-a').style.display = 'block';
+  var cb = document.getElementById('oauth-consent');
+  cb.innerHTML = '&nbsp;';
+  cb.classList.remove('checked');
+  document.getElementById('oauth-confirm-btn').classList.add('disabled');
+}
+
+function togglePayBtn(input) {
+  var val = input.value.replace(/[^0-9.]/g, '');
+  var parts = val.split('.');
+  if (parts.length > 2) val = parts[0] + '.' + parts.slice(1).join('');
+  if (parts[1] && parts[1].length > 2) val = parts[0] + '.' + parts[1].substring(0, 2);
+  input.value = val;
+  var btn = document.getElementById('pay-btn');
+  var num = parseFloat(val);
+  if (num > 0) {
+    btn.classList.remove('disabled');
+  } else {
+    btn.classList.add('disabled');
+  }
+}
+
+function showDanceModal() {
+  document.getElementById('dance-state-a').style.display = 'none';
+  document.getElementById('dance-state-b').style.display = 'block';
+}
+
+function hideDanceModal() {
+  document.getElementById('dance-state-b').style.display = 'none';
+  document.getElementById('dance-state-a').style.display = 'block';
+}
+
+function toggleOAuthConsent(el) {
+  var btn = document.getElementById('oauth-confirm-btn');
+  if (el.classList.contains('checked')) {
+    el.innerHTML = '&nbsp;';
+    el.classList.remove('checked');
+    btn.classList.add('disabled');
+  } else {
+    el.innerHTML = '&#10003;';
+    el.classList.add('checked');
+    btn.classList.remove('disabled');
+  }
+}
+</script>
+
+</body>
+</html>
