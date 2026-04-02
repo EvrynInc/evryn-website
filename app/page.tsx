@@ -132,7 +132,11 @@ export default function Home() {
               contact@evryn.ai
             </a>
             {" | "}
-            <Link href="/privacy-policy" className="hover:text-white transition-colors">
+            <Link href="/terms" className="hover:text-white transition-colors">
+              Terms of Service
+            </Link>
+            {" | "}
+            <Link href="/privacy" className="hover:text-white transition-colors">
               Privacy Policy
             </Link>
           </p>
