@@ -39,7 +39,8 @@ npm install -g @anthropic-ai/claude-code
 
 ### 4. Clone the repo ✅
 ```bash
-cd C:\Users\Justin\Evryn\Code
+cd C:\Users\Justin\Evryn\Code    # desktop
+cd C:\Users\jbmcg\Evryn\Code     # laptop
 git clone https://github.com/EvrynInc/evryn-website.git
 ```
 
@@ -48,7 +49,8 @@ git clone https://github.com/EvrynInc/evryn-website.git
 
 If you ever need to do it manually:
 ```bash
-cd C:\Users\Justin\Evryn\Code\evryn-website
+cd C:\Users\Justin\Evryn\Code\evryn-website    # desktop
+cd C:\Users\jbmcg\Evryn\Code\evryn-website     # laptop
 npm install
 ```
 
@@ -78,7 +80,8 @@ The site needs Cloudflare Turnstile keys for the waitlist form captcha.
 
 2. **Navigate to your project:**
    ```bash
-   cd C:\Users\Justin\Evryn\Code\evryn-website
+   cd C:\Users\Justin\Evryn\Code\evryn-website    # desktop
+   cd C:\Users\jbmcg\Evryn\Code\evryn-website     # laptop
    ```
 
 3. **Pull latest changes** (in case you worked from another machine):
