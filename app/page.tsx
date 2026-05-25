@@ -1,6 +1,7 @@
 import { WaitlistForm } from "@/components/waitlist-form";
 import Link from "next/link";
 import Image from "next/image";
+import ContactLink from "@/components/ContactLink";
 
 export default function Home() {
   return (
@@ -39,11 +40,11 @@ export default function Home() {
           <p>if every time you needed someone</p>
           <p className="py-2 md:py-3">for <em>anything</em></p>
           <p>you had a trusted friend</p>
-          <p>who really knew you</p>
+          <p>who knew all the right people</p>
           <p className="pb-2 md:pb-3">and she'd just...</p>
-          <p>find you the right person.</p>
+          <p>find the <em>best fit for <span className="underline">you</span></em>.</p>
           <p className="pt-3 md:pt-4">And not <em>just</em> the best fit for you</p>
-          <p>but someone she <em>also</em> <em><span className="underline">trusted</span></em> enough</p>
+          <p>someone she <em><span className="underline">trusted</span></em> enough</p>
           <p>to bring into your life.</p>
         </div>
         <p className="text-2xl md:text-3xl text-white font-normal">
@@ -128,10 +129,6 @@ export default function Home() {
             Find <em>your</em> people.
           </p>
           <p className="text-white/60 text-sm mb-2">
-            <a href="mailto:contact@evryn.ai" className="hover:text-white transition-colors">
-              contact@evryn.ai
-            </a>
-            {" | "}
             <Link href="/terms" className="hover:text-white transition-colors">
               Terms of Service
             </Link>
@@ -139,6 +136,8 @@ export default function Home() {
             <Link href="/privacy" className="hover:text-white transition-colors">
               Privacy Policy
             </Link>
+            {" | "}
+            <ContactLink />
           </p>
           <p className="text-white/40 text-sm">
             © 2025–2026 Evryn, Inc.
