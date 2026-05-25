@@ -105,7 +105,7 @@ export default function Home() {
             <p>I only connect people I trust.</p>
             <p>And you don't pay a penny unless a connection genuinely works.</p>
             <p>And <span className="underline">you</span> decide the price — because only you know what each connection is worth to you.</p>
-            <p>And because how you show up in your relationship with me gives me an idea of how you'll show up with the people I connect you to.</p>
+            <p>And because how you show up in your relationship with <span className="underline">me</span> gives me an idea of how you'll show up with the people I connect you to.</p>
             <p>Trust is sacred to me.</p>
             <p>In my house, we take care of each other.</p>
             <p className="pt-2">I can't wait to meet you!</p>
