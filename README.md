@@ -8,7 +8,8 @@ The public-facing marketing website for Evryn — an AI who finds you *your* peo
 
 ```bash
 # 1. Navigate to the project
-cd C:\Users\Justin\Evryn\Code\evryn-website
+cd C:\Users\Justin\Evryn\Code\evryn-website    # desktop
+cd C:\Users\jbmcg\Evryn\Code\evryn-website     # laptop
 
 # 2. Install dependencies (first time only)
 npm install
