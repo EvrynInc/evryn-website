@@ -43,8 +43,8 @@ export default function Home() {
           <p>who knew all the right people</p>
           <p className="pb-2 md:pb-3">and she'd just...</p>
           <p>find the <em>best fit for <span className="underline">you</span></em>.</p>
-          <p className="pt-3 md:pt-4">And not <em>just</em> the best fit for you</p>
-          <p>someone she <em><span className="underline">trusted</span></em> enough</p>
+          <p className="pt-3 md:pt-4">And not <em>just</em> the best fit &mdash;</p>
+          <p>someone she <em><span className="underline">trusts</span></em> enough</p>
           <p>to bring into your life.</p>
         </div>
         <p className="text-2xl md:text-3xl text-white font-normal">
@@ -77,7 +77,7 @@ export default function Home() {
                 She finds you <em>your people</em>
               </h2>
               <p className="text-base text-white/80 leading-relaxed">
-                Just the right fit: soulmate, cofounder, crew, someone fun — even just the right tutor, or someone to buy an old couch. We don't need <em>more</em> options. Just the <em>right</em> ones.
+                Just the right fit: soulmate, cofounder, crew, hookup — even a great landlord, a health professional who really listens, or just somebody to buy an old couch. You don't need <em>more</em> options. Just the <em>right</em> ones.
               </p>
             </div>
 
@@ -87,7 +87,7 @@ export default function Home() {
                 She guards your gates
               </h2>
               <p className="text-base text-white/80 leading-relaxed">
-                No public profile and no open messaging means there's simply no way for pesterers, creeps, spammers, or scammers to even know you exist. Evryn only connects you to someone if she trusts them enough.
+                No public profile and no open messaging means there's simply no way for pesterers, creeps, spammers, or scammers to even know you exist. Evryn only connects you to someone if she thinks they're great for you — and only once <span className="underline">you</span> give the green light.
               </p>
             </div>
 
@@ -104,7 +104,8 @@ export default function Home() {
           <div className="text-base md:text-lg text-white/80 italic leading-relaxed space-y-4">
             <p>I only connect people I trust.</p>
             <p>And you don't pay a penny unless a connection genuinely works.</p>
-            <p>And <span className="underline">you</span> decide the price — because like I said, I only connect people I trust.</p>
+            <p>And <span className="underline">you</span> decide the price — because only you know what each connection is worth to you.</p>
+            <p>And because how you show up in your relationship with me gives me an idea of how you'll show up with the people I connect you to.</p>
             <p>Trust is sacred to me.</p>
             <p>In my house, we take care of each other.</p>
             <p className="pt-2">I can't wait to meet you!</p>
