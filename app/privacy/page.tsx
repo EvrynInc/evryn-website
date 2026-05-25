@@ -19,7 +19,7 @@ export default function PrivacyPolicyPage() {
             Evryn Inc. Privacy Notice
           </h1>
 
-          <p className="text-gray-600 mb-8">Last Updated: April 3, 2026</p>
+          <p className="text-gray-600 mb-8">Last Updated: April 8, 2026</p>
 
           <div className="prose prose-gray max-w-none text-gray-800">
             <p className="mb-4">
@@ -71,10 +71,6 @@ export default function PrivacyPolicyPage() {
                 <li><strong>Business Development and Strategic Partnerships.</strong> We may collect personal information from individuals and third parties to assess and pursue potential business opportunities.</li>
                 <li><strong>Job Applications.</strong> If you apply for a job with us, we will collect any personal information you provide in connection with your application, such as your contact information and CV.</li>
               </ul>
-              <p className="mb-4 bg-gray-50 rounded-lg p-4">
-                <strong>No Sensitive Data:</strong> When forwarding content as an Initiating User, please do not provide any regulated personal information (such as personal health information, social security numbers, financial data, cardholder data, etc.) to Evryn.
-              </p>
-
               <h3 className="text-xl font-semibold mb-3">B. Personal Information Collected Automatically</h3>
               <p className="mb-3">We may collect personal information automatically when you use the Services.</p>
               <ul className="list-disc pl-8 space-y-2 mb-4">
