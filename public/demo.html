@@ -503,7 +503,7 @@
 
   <div class="legal-note" style="margin-top: 20px;">
     <div class="tag">Ephemeral Session</div>
-    <div>No cookie-based session persistence. Every new page load = fresh conversation. Session lives in a server-side session store, keyed to a token in the tab's JavaScript runtime — dies when the tab closes. If user closes the tab and returns, Evryn doesn't remember them. This is a deliberate safety choice: prevents Person A's data from leaking to Person B on a shared device. User already consented to ToS/PP at the landing page (Screen 1).</div>
+    <div>No cookie-based session persistence. Every new page load = fresh conversation. Session lives in a server-side session store, keyed to a token in the tab's JavaScript runtime — dies when the tab closes. In the pre-account conversation, if user closes the tab and returns, Evryn doesn't remember them. This is a deliberate safety choice, when a user doesn't have an account yet: prevents Person A's data from leaking to Person B on a shared device. User already consented to ToS/PP at the landing page (Screen 1).</div>
   </div>
   <div class="legal-note">
     <div class="tag">Data Processing</div>
@@ -511,7 +511,7 @@
   </div>
   <div class="legal-note">
     <div class="tag">User Isolation</div>
-    <div>User isolation is absolute. Evryn never reveals one user's information to another — including whether she knows someone, has spoken with them, or has any relationship with them. Even if a user mentions another person by name, Evryn treats each conversation as fully independent. Evryn does not confirm or deny relationships with other users.</div>
+    <div>User isolation is absolute. Unless a user has given explicit permission, Evryn never reveals one user's information to another — including whether she knows someone, has spoken with them, or has any relationship with them. Even if a user mentions another person by name, Evryn treats each conversation as fully independent. Evryn does not confirm or deny relationships with other users.</div>
   </div>
   <div class="legal-note">
     <div class="tag">User Recognition</div>
@@ -771,7 +771,7 @@
   </div>
   <div class="legal-note">
     <div class="tag">Background Processing</div>
-    <div>Profile continuously refined through both active conversation and passive analysis. Evryn's reflection module periodically re-examines user stories and updates understanding.</div>
+    <div>Profile continuously refined through both active conversation and passive analysis. Evryn's Reflection module periodically re-examines user stories and updates understanding.</div>
   </div>
 </div>
 
@@ -845,7 +845,7 @@
   </div>
   <div class="legal-note">
     <div class="tag">Matching &mdash; AI Decision</div>
-    <div>Match determined by structured filters (geography, profession, constraints) and profile similarity analysis, with final evaluation by Evryn. Match descriptions written by Evryn — her voice, her assessment, her framing.</div>
+    <div>Match determined by structured filters (geography, profession, constraints) and profile-intent similarity analysis, with final evaluation by Evryn. Match descriptions written by Evryn — her voice, her assessment, her framing.</div>
   </div>
 </div>
 
@@ -882,7 +882,12 @@
     <div class="spacer"></div>
 
     <div class="card" style="text-align: center;">
-      <div style="font-size: 28px; margin-bottom: 12px;">&#128274;</div>
+      <div style="margin-bottom: 12px; display: flex; justify-content: center;">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2.5l7 3v5c0 4.5-3 7.8-7 9-4-1.2-7-4.5-7-9v-5l7-3z"/>
+          <path d="M8.5 12l2.3 2.3 4.7-4.9"/>
+        </svg>
+      </div>
       <div class="text-sm mb-12" style="font-weight: 400;">Verify your identity</div>
       <div class="text-xs text-muted mb-12" style="line-height: 1.5;">
         You'll be taken to our verification partner.<br>
@@ -934,6 +939,10 @@
 
         We discussed trust-based pricing before, so you tell me what you think is fair. And remember, I can also suggest a price if that's easier, but you make the final call.
       </div>
+      <div class="bubble evryn">
+
+        And if the connection doesn't work out for any reason, just let me know. I'm happy to give you a refund in the first 30 days &mdash; no explanation required &mdash; though feedback will really help me find you the best fit in the future.
+      </div>
     </div>
 
     <!-- Payment modal slides up from bottom -->
@@ -944,7 +953,6 @@
       </div>
 
       <button class="btn primary full mt-16 disabled" id="pay-btn" onclick="showScreen('connection')">Pay and connect</button>
-      <div class="text-center text-xs text-muted mt-12">30-day 100% satisfaction guarantee</div>
     </div>
 
     <div class="bottom-nav">
@@ -960,7 +968,7 @@
   </div>
   <div class="legal-note">
     <div class="tag">Pricing + Refund</div>
-    <div>Trust-based pricing: user sets the amount. 100% satisfaction guarantee — full refund within 30 days, no explanation required (though feedback appreciated). Refund requested via in-app conversation with Evryn or email to support@evryn.ai. Refund processed regardless of whether feedback is given. Payment behavior is a trust signal — Evryn notices how you show up in the exchange.</div>
+    <div>Trust-based pricing: user sets the amount. Full refund within 30 days, no explanation required. Refund requested via in-app conversation with Evryn or email to support@evryn.ai. Refund processed regardless of whether feedback is given. Payment behavior is a trust signal — Evryn notices how you show up in the exchange.</div>
   </div>
 </div>
 
@@ -1103,7 +1111,7 @@
     <div>User feedback on connections is collected and used to calibrate matching. Feedback updates both users' profiles (privacy-safe — no cross-user data leakage). Used for individual profile refinement and anonymized cluster/global calibration.</div>
   </div>
   <div class="legal-note">
-    <div class="tag">Satisfaction Guarantee</div>
+    <div class="tag">Refund</div>
     <div>If the connection didn't work, the user can request a refund here by simply telling Evryn, or via support@evryn.ai. Evryn asks what didn't feel right — not to gatekeep the refund, but because the feedback helps. Refund processed regardless of whether feedback is given.</div>
   </div>
 </div>
